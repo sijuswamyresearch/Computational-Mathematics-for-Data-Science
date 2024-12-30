@@ -362,6 +362,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#bibliographies-in-latex" id="toc-bibliographies-in-latex" class="nav-link" data-scroll-target="#bibliographies-in-latex">Bibliographies in LaTeX</a>
   <ul class="collapse">
+  <li><a href="#using-the-thebibliography-environment" id="toc-using-the-thebibliography-environment" class="nav-link" data-scroll-target="#using-the-thebibliography-environment">Using the <code>thebibliography</code> Environment</a></li>
   <li><a href="#using-biblatex-with-.bib-files" id="toc-using-biblatex-with-.bib-files" class="nav-link" data-scroll-target="#using-biblatex-with-.bib-files">Using biblatex with <code>.bib</code> Files</a></li>
   </ul></li>
   <li><a href="#final-session-using-latex-templates-from-github-repository" id="toc-final-session-using-latex-templates-from-github-repository" class="nav-link" data-scroll-target="#final-session-using-latex-templates-from-github-repository">Final Session: Using LaTeX Templates from GitHub Repository</a>
@@ -583,7 +584,9 @@ Write an equation, label it, and then reference it in a subsequent line of text.
 </section>
 <section id="bibliographies-in-latex" class="level1">
 <h1>Bibliographies in LaTeX</h1>
-<p>## Using the <code>thebibliography</code> Environment</p>
+<p>A bibliography is a comprehensive list of all the sources you have consulted during your research, whether or not you have cited them directly in your work. It provides a broader view of the literature related to your topic and includes books, articles, websites, and other materials.</p>
+<section id="using-the-thebibliography-environment" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-thebibliography-environment">Using the <code>thebibliography</code> Environment</h2>
 <p>The <code>thebibliography</code> environment is a built-in LaTeX environment for creating bibliographies. Here is an example:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">thebibliography</span>}{9}</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\bibitem</span>{lamport94}</span>
@@ -593,6 +596,7 @@ Write an equation, label it, and then reference it in a subsequent line of text.
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  2nd Edition,</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  1994.</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">thebibliography</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="using-biblatex-with-.bib-files" class="level2">
 <h2 class="anchored" data-anchor-id="using-biblatex-with-.bib-files">Using biblatex with <code>.bib</code> Files</h2>
 <p>The biblatex package provides advanced bibliography facilities. Here is an example of how to use it:</p>
@@ -620,6 +624,20 @@ First, create a <code>.bib</code> file (e.g., <code>references.bib</code>) with 
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">\printbibliography</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reference
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A reference is a specific citation of a source that you have directly mentioned or quoted in your work. References are typically listed at the end of your document and correspond to in-text citations.</p>
+</div>
+</div>
+<hr>
 </section>
 </section>
 <section id="final-session-using-latex-templates-from-github-repository" class="level1">
