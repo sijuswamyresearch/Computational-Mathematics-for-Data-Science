@@ -1,0 +1,91 @@
+---
+subtitle: "24MA602 --Computational Mathematics for Data Science"
+title: "<font style='font-size:1em;'>🗓️ Week 01<br/> Introduction</font>"
+author: Prof.(Dr.) Soman K.P
+institute: '[Amrita Viswha Vidyapeetham]'
+date: 14 March 2024
+date-meta: 14 March 2024
+date-format: "DD MMM YYYY"
+toc: true
+toc-depth: 1
+toc-title: "About the Course:"
+center-title-slide: false
+from: markdown+emoji
+format:
+  revealjs: 
+    fig-responsive: true
+    theme: simple
+    slide-number: true
+    mouse-wheel: false
+    preview-links: auto
+    logo: /figures/icons/course_favicon.png
+    css: /css/styles_slides.css
+    footer: '24MA602 --Computational Mathematics for Data Science'
+---
+
+# Who are we
+
+## Your Professor {.smaller}
+
+::: columns
+
+::: {.column style="display:inline-block;width:40%;height:60%;border-radius:1em;margin:1%;padding:1.5%;background-color:#f5f5f5"}
+<figure>
+    <img src="/figures/people/soman_sir.jpg" alt="Dean ASAI" role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;font-size:1em;" class="img-responsive atto_image_button_text-bottom">
+    <figcaption>
+        <strong>Prof.&nbsp;<span><a href="#" target="_blank" class="external">(Dr.) Soman K.P.</a></span></strong>
+        <br/>Professor & Dean 
+        <br/>Amrita School of Artificial Intelligence      
+    </figcaption>
+</figure>
+:::
+
+::: {.column style="width:50%;font-size:0.85em;margin-left:3%;"}
+- Ph.D., IIT-Kharagpur
+- M.Tech. in Reliability Engineering, IIT-Kharagpur
+- Post Master Diploma in Statistical Quality Control and Operations Research, Indian Statistical Institute, Calcutta
+- BSc Engg. in Electrical Engineering, REC (Now NIT) Kozhikode
+
+<span class="tag" style="background-color:var(--quarto-hl-st-color)">Dean ASAI</span>
+<br/>
+<span class="tag" style="background-color:var(--quarto-hl-fu-color)">Professor, Electronics and Communication Engineering</span>
+<br/>
+<span class="tag" style="background-color:var(--quarto-hl-dv-color)">World’s Top 2% Most Influential Scientist</span>
+
+:::
+
+:::
+
+## Course Content Developers {.smaller}
+
+::: columns
+
+::: {.column style="display:inline-block;width:40%;height:60%;border-radius:1em;margin:1%;padding:1.5%;background-color:#f5f5f5"}
+<figure>
+    <img src="/figures/people/vipin.jpg" alt="Image Created with DALL·E. Prompt: 'octopus-like alien futuristic non-binary happy teaching assistant, phd student Octopunian, award-winning professional high-quality studio headshot'" role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;font-size:1em;" class="img-responsive atto_image_button_text-bottom">
+    <figcaption>
+        <strong><span><a href="#" target="_blank" class="external">Assistant Professor</a></span></strong>
+        <br/> 
+        PhD in Image Processing <br>
+        M.Tech. in Artificial Intelligence<br/>
+        📧 
+        <br/>
+    </figcaption>
+</figure>
+:::
+
+::: {.column style="display:inline-block;width:40%;height:60%;border-radius:1em;margin:1%;padding:1.5%;background-color:#f5f5f5"}
+<figure>
+    <img src="/figures/people/swamy.jpg" alt="Image Created with DALL·E. Prompt: 'octopus-like alien futuristic non-binary happy teaching assistant, phd student Octopunian, award-winning professional high-quality studio headshot'" role="presentation" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;font-size:1em;" class="img-responsive atto_image_button_text-bottom">
+    <figcaption>
+        <strong><span><a href="#" target="_blank" class="external">Research Scholor</a></span></strong>
+        <br/> 
+        PhD Candidate at ASAI <br>
+        MSc in Mathematics<br/>
+        📧 
+        <br/>
+    </figcaption>
+</figure>
+:::
+
+:::

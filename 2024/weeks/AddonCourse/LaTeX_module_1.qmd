@@ -1,0 +1,380 @@
+---
+title: "Module 1: Introduction to LaTeX and Setup"
+format: html
+editor: visual
+---
+
+# Introduction
+
+In this module, you’ll get hands-on experience with LaTeX basics. We’ll start with a simple document setup and move into creating sections, formatting text, and working with lists. Follow along by copying the code snippets into Overleaf, and watch how LaTeX transforms plain text into a structured, professional-looking document.
+
+----
+
+## 1. Getting Started with LaTeX
+
+1. **Open Overleaf** <https://www.overleaf.com/>.
+2. **Create a New Project** and choose **Blank Project**.
+3. Replace any existing text with the content below.
+
+
+## Basic Document Setup
+
+Start with a basic document structure. Copy the following code into Overleaf as the starting template:
+
+```latex
+\documentclass{article}
+%document preample
+\title{My First LaTeX Document}
+\author{Your Name}
+\date{\today}
+\begin{document}
+%document body
+\maketitle % generating title of the document
+
+\end{document}
+```
+
+:::{.callout-tip}
+
+### Explanation:
+ This code sets up the document title, author, and date. `\maketitle` generates the title section based on these details.
+:::
+
+## Adding an Introduction Section
+
+Now, let’s add an introductory section to the document. Place the following code after `\maketitle`:
+
+```latex
+\section*{Introduction}
+Welcome to your first LaTeX document! LaTeX is a typesetting system that makes it easy to produce high-quality documents.
+```
+:::{.callout-tip}
+### Explanation: 
+
+`\section*{Introduction}` creates an unnumbered section. The `*` suppresses numbering, making it ideal for introductory or conclusion sections.
+:::
+
+## Adding Structured Sections and Subsections
+
+Expand the document with `sections` and `subsections`. Add the following after the Introduction section:
+
+```latex
+\section{Getting Started}
+LaTeX documents are structured in sections and subsections to improve readability.
+
+\subsection{Installation}
+To get started with LaTeX, you can either install it locally or use online platforms like Overleaf.
+
+\subsection{Document Structure}
+
+LaTeX documents are organized into a preamble and a body, where the content goes between \verb|\begin{document}| and \verb|\end{document}|
+```
+
+:::{.callout-tip}
+### Explanation: 
+
+`\section{...}` and `\subsection{...}` create numbered sections and subsections. LaTeX automatically numbers these for easy referencing.
+
+:::
+
+## Text Formatting
+
+Now, let’s add some formatted text within the “Getting Started” section. Place the following within the Getting Started section, after Document Structure:
+
+```latex
+\section{Text Formatting}
+LaTeX allows you to format text in various styles:
+
+\textbf{Bold text}
+
+\textit{Italic text}
+
+\underline{Underlined text}
+
+This is a \verb|\textbf{\textit{combination}}| of bold and italic text.
+```
+
+:::{.callout-note}
+### Explanation:
+ The commands `\textbf{}`, `\textit{}`, and `\underline{}` format text as bold, italic, and underlined. You can also combine these commands to create multiple styles.
+
+:::
+
+## Creating Lists
+
+Next, we’ll create both unordered and ordered lists within the document. Place this after the Text Formatting section:
+
+```latex
+
+\section{Lists}
+
+\subsection{Unordered List}
+\begin{itemize}
+    \item First item
+    \item Second item
+    \item Third item
+\end{itemize}
+
+\subsection{Ordered List}
+\begin{enumerate}
+    \item First item
+    \item Second item
+    \item Third item
+\end{enumerate}
+
+```
+
+:::{.callout-note}
+
+### Explanation: 
+
+`\begin{itemize}` creates an unordered (bullet) list, and `\begin{enumerate}` creates an ordered (numbered) list. Each list item begins with `\item`.
+
+* We can even change the style of individual bullets. The `\item` command accepts an optional argument between *square brackets* that determines the label to be used for that particular item. This is an example of a list with custom bullets:
+:::
+
+## Adding a Simple Table
+
+Let’s add a simple table in LaTeX. Insert this after the Lists section:
+
+```latex
+\section{Simple Table}
+
+\begin{table}[h!]
+    \centering
+    \caption{A Simple Table Example}
+    \label{tab:label1}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Column 1 & Column 2 & Column 3 \\
+        \hline
+        Data 1 & Data 2 & Data 3 \\
+        Data 4 & Data 5 & Data 6 \\
+        Data 7 & Data 8 & Data 9 \\
+        \hline
+    \end{tabular}
+\end{table}
+```
+
+:::{.callout-note}
+
+### Explanation: 
+`\begin{tabular}{|c|c|c|}` creates a 3-column table with vertical lines. Each `&` separates columns, and each `\\` begins a new row. The `\hline` command creates horizontal lines.
+
+* You can generate LaTeX code for your tables using the online table generators <https://www.tablesgenerator.com/>
+:::
+
+## Adding Images
+
+For images, you’ll need to use the `graphicx` package. Add the following code at the top before `\begin{document}`, and add the image code below within the document.
+
+```latex
+\usepackage{graphicx} % include it in preample. Required for including images
+```
+Inside the document, add after the Table section:
+
+```latex
+\section{Adding Images}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image} % Replace 'example-image' with your file name
+    \caption{A Sample Image}
+\end{figure}
+```
+
+:::{.callout-note}
+### Explanation:
+
+ `\includegraphics[width=0.5\textwidth]{file-name}` adds an image, with `width=0.5\textwidth` resizing it to half the text width. Replace `example-image` with the actual file name.
+
+:::
+
+## Adding Footnotes and Simple References
+
+Add a footnote and a placeholder for a reference. Place this after the Images section:
+
+```latex
+\section{Footnotes and References}
+
+This sentence includes a footnote.\footnote{This is the footnote text.}
+
+To add references, use \verb|\cite{}| with a BibTeX file, which we’ll cover in a future module.
+
+```
+
+:::{.callout-note}
+### Explanation: 
+
+`\footnote{}` adds a footnote at the bottom of the page. `\cite{}` is used for citations, which require a BibTeX file for full functionality.
+
+:::
+
+## Full Document Code
+
+Here’s how your full document should look after completing Module 1:
+
+```latex
+\documentclass{article}
+\usepackage{graphicx} % Required for including images
+
+\begin{document}
+
+\title{My First LaTeX Document}
+\author{Your Name}
+\date{\today}
+
+\maketitle
+
+\section*{Introduction}
+Welcome to your first LaTeX document! LaTeX is a typesetting system that makes it easy to produce high-quality documents.
+
+\section{Getting Started}
+LaTeX documents are structured in sections and subsections to improve readability.
+
+\subsection{Installation}
+To get started with LaTeX, you can either install it locally or use online platforms like Overleaf.
+
+\subsection{Document Structure}
+LaTeX documents are organized into a preamble and a body, where the content goes between \verb|\begin{document}| and \verb|\end{document}|.
+
+\section{Text Formatting}
+LaTeX allows you to format text in various styles:
+
+\textbf{Bold text}
+
+\textit{Italic text}
+
+\underline{Underlined text}
+
+This is a \verb|\textbf{\textit{combination}}| of bold and italic text.
+
+\section{Lists}
+
+\subsection{Unordered List}
+\begin{itemize}
+    \item First item
+    \item Second item
+    \item Third item
+\end{itemize}
+
+\subsection{Ordered List}
+\begin{enumerate}
+    \item First item
+    \item Second item
+    \item Third item
+\end{enumerate}
+
+\section{Simple Table}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Column 1 & Column 2 & Column 3 \\
+        \hline
+        Data 1 & Data 2 & Data 3 \\
+        Data 4 & Data 5 & Data 6 \\
+        Data 7 & Data 8 & Data 9 \\
+        \hline
+    \end{tabular}
+    \caption{A Simple Table Example}
+\end{table}
+
+\section{Adding Images}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{example-image} % Replace 'example-image' with your file name
+    \caption{A Sample Image}
+\end{figure}
+
+\section{Footnotes and References}
+
+This sentence includes a footnote.\footnote{This is the footnote text.}
+
+To add references, use \verb|\cite{}| with a BibTeX file, which we’ll cover in a future module.
+
+\end{document}
+
+```
+
+# LaTeX Module 1: Hands-On Tasks
+
+Complete the following tasks to solidify your understanding of LaTeX basics. Each task involves modifying or adding to your document in Overleaf. 
+
+---
+
+## Task 1: Modify Document Title and Author
+
+1. **Change the title** to something unique, like "Learning LaTeX with Confidence."
+2. **Update the author** with your full name and add a brief subtitle to introduce your document’s purpose.
+3. **Set a custom date** instead of using `\today` (e.g., your birthdate or today’s date in a different format).
+
+---
+
+## Task 2: Add a New Section with Subsections
+
+1. Create a new section called `Learning LaTeX`.
+2. Add two subsections titled `Why Learn LaTeX?` and `Benefits of Using LaTeX`.
+3. In each subsection, write two sentences about the importance of LaTeX for engineering professionals.
+
+---
+
+## Task 3: Experiment with Text Formatting
+
+1. In the `Learning LaTeX` section, add some text with **bold**, *italic*, and _underlined_ formatting.
+2. Try combining formatting, such as **bold and italic** text together.
+3. Add a quote block using `\begin{quote} ... \end{quote}` with a famous quote about learning or knowledge.
+
+---
+
+## Task 4: Create Lists
+
+1. In the `Benefits of Using LaTeX` subsection, create an unordered list highlighting three advantages of using LaTeX.
+2. Add an ordered list in the same section with three steps to start using LaTeX (e.g., choosing a platform, learning syntax basics, etc.).
+
+---
+
+## Task 5: Design a Table
+
+1. Add a section called `Comparison Table`.
+2. Create a table with two columns: **Feature** and **Description**.
+3. List three LaTeX features, with a brief description of each.
+
+---
+
+## Task 6: Insert an Image
+
+1. Add an image to your document in a new section titled `Visual Elements`.
+2. Search for a free image related to “technology” or “engineering” online and upload it to Overleaf.
+3. Use `\includegraphics` to display it at a width of 0.7 times the text width, and add a caption.
+
+---
+
+## Task 7: Experiment with Footnotes
+
+1. Add a footnote in the `Learning LaTeX` section explaining a technical term (e.g., "typesetting").
+2. Try placing a second footnote in the `Benefits of Using LaTeX` subsection, providing additional information.
+
+---
+
+## Task 8: Add a Customized Title Page
+
+1. Research `\titlepage` and try creating a dedicated title page by adding `\maketitle` on a new page. 
+2. Experiment with the layout by moving `\maketitle` to different positions in the document.
+
+---
+
+## Task 9: Customize the Table of Contents (Optional)
+
+1. Add `\tableofcontents` before the first section to generate an automatic table of contents.
+2. Experiment with `\section*{...}` vs. `\section{...}` in one of the sections to see how it impacts the table of contents.
+
+---
+
+## Task 10: Reflective Practice (Optional)
+
+1. Add a section at the end titled `Reflections`.
+2. Write a short paragraph about what you've learned and any questions you have about LaTeX.
+3. Format this paragraph with any styles you learned, like bold, italic, and quotes.
+
+---

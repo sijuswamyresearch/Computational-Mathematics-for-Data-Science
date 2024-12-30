@@ -1,0 +1,202 @@
+---
+title: "Five Fundamental Decompositions in Linear Algebra (Adapted from Gilbert Strang's Approach)"
+
+---
+
+# Introduction
+
+Linear algebra provides various tools for decomposing matrices, each with unique applications in engineering, data science, and machine learning. Here we discuss **Five Fundamental Matrix Decompositions**: CR decomposition, LU decomposition, Spectral Decomposition, QR decomposition, and Singular Value Decomposition (SVD). These decompositions help us understand matrix structure, solve linear systems, and analyze large datasets.
+
+---
+
+# 1. CR Decomposition (Column-Row Decomposition)
+
+:::{.callout-note}
+**Key Concept**: The **CR decomposition** expresses a matrix $A$ as the product of two matrices—one made up of its columns and the other of its rows:
+
+$$ A = C R $$
+:::
+
+Given a matrix $A \in \mathbb{R}^{m \times n}$, the CR decomposition is written as:
+
+$$ A = C R $$
+
+where:
+- $C \in \mathbb{R}^{m \times k}$ consists of $k$ linearly independent columns of $A$,
+- $R \in \mathbb{R}^{k \times n}$ contains corresponding rows that, when multiplied by $C$, reconstruct $A$.
+
+### Example
+
+Let’s take an example where $A$ is given by:
+
+$$ A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 9 \\ 7 & 8 & 15 \end{bmatrix} $$
+
+We can choose the first two columns of $A$ to form the matrix $C$ as they are independent:
+
+$$ C = \begin{bmatrix} 1 & 2 \\ 4 & 5 \\ 7 & 8 \end{bmatrix} $$
+
+Now, find $R$, the row reduced echelon form of $A$:
+
+$$ R = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 1 \end{bmatrix} $$
+
+Thus, the CR decomposition is, $A=CR$:
+
+$$ A = \begin{bmatrix} 1 & 2 \\ 4 & 5 \\ 7 & 8 \end{bmatrix} \begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 1 \end{bmatrix} $$
+
+:::{.callout-note}
+**Application in Data Science**: CR decomposition is useful for **dimensionality reduction** by approximating a matrix with lower rank, simplifying large datasets.
+:::
+
+---
+
+# 2. LU Decomposition
+
+:::{.callout-note}
+**Key Concept**: The **LU decomposition** factors a matrix $A$ into a **lower triangular matrix** $L$ and an **upper triangular matrix** $U$:
+
+$$ A = LU $$
+:::
+
+The decomposition exists for square matrices $A$ and can be extended to non-square matrices using pivoting techniques.
+
+LU decomposition is computed through **Gaussian elimination**. The matrix $A$ is reduced to an upper triangular matrix, and the operations applied are stored in $L$.
+
+### Example
+
+Consider the matrix:
+
+$$ A = \begin{bmatrix} 4 & 3 \\ 6 & 3 \end{bmatrix} $$
+
+We decompose $A$ into:
+
+$$ L = \begin{bmatrix} 1 & 0 \\ 1.5 & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 4 & 3 \\ 0 & -1.5 \end{bmatrix} $$
+
+Thus, the LU decomposition is:
+
+$$ A = \begin{bmatrix} 1 & 0 \\ 1.5 & 1 \end{bmatrix} \begin{bmatrix} 4 & 3 \\ 0 & -1.5 \end{bmatrix} $$
+
+:::{.callout-note}
+**Application in Engineering**: LU decomposition is used for efficiently solving systems of linear equations by forward and backward substitution.
+:::
+
+---
+
+# 3. Spectral Decomposition
+
+:::{.callout-note}
+**Key Concept**: The **Spectral Decomposition** applies to **symmetric matrices** and expresses $A$ as:
+
+$$ A = Q \Lambda Q^T $$
+:::
+
+Where:
+- $Q$ is an orthogonal matrix with eigenvectors of $A$,
+- $\Lambda$ is a diagonal matrix with eigenvalues of $A$.
+
+
+For any **symmetric matrix** $A$, its eigenvectors form an **orthogonal basis**, and $A$ can be diagonalized as:
+
+$$ A = Q \Lambda Q^T $$
+
+### Example
+
+Let:
+
+$$ A = \begin{bmatrix} 4 & 1 \\ 1 & 3 \end{bmatrix} $$
+
+The eigenvalues are $\lambda_1 = 5$ and $\lambda_2 = 2$, and the eigenvectors are:
+
+$$ v_1 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}, \quad v_2 = \begin{bmatrix} -1 \\ 1 \end{bmatrix} $$
+
+Thus:
+
+$$ Q = \begin{bmatrix} 1/\sqrt{2} & -1/\sqrt{2} \\ 1/\sqrt{2} & 1/\sqrt{2} \end{bmatrix}, \quad \Lambda = \begin{bmatrix} 5 & 0 \\ 0 & 2 \end{bmatrix} $$
+
+So, the spectral decomposition is:
+
+$$ A = Q \Lambda Q^T $$
+
+:::{.callout-note}
+**Application in PCA**: Spectral decomposition is widely used in **Principal Component Analysis (PCA)**, where data is projected onto principal components to reduce dimensionality.
+:::
+
+---
+
+# 4. QR Decomposition
+
+:::{.callout-note}
+**Key Concept**: The **QR decomposition** factors a matrix $A$ into an **orthogonal matrix** $Q$ and an **upper triangular matrix** $R$:
+
+$$ A = QR $$
+:::
+
+
+QR decomposition is computed using the **Gram-Schmidt process**, which orthogonalizes the columns of $A$ to form $Q$, and the resulting triangular factors are stored in $R$.
+
+### Example
+
+Given the matrix:
+
+$$ A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \\ 5 & 6 \end{bmatrix} $$
+
+Using Gram-Schmidt, we obtain:
+
+$$ Q = \begin{bmatrix} 0.17 & 0.83 \\ 0.50 & 0.12 \\ 0.83 & -0.54 \end{bmatrix}, \quad R = \begin{bmatrix} 6.08 & 7.44 \\ 0 & 0.83 \end{bmatrix} $$
+
+Thus:
+
+$$ A = QR $$
+
+:::{.callout-note}
+**Application in Machine Learning**: QR decomposition is used in **linear regression** for finding the least-squares solution by solving overdetermined systems.
+:::
+
+---
+
+# 5. Singular Value Decomposition (SVD)
+
+:::{.callout-note}
+**Key Concept**: The **Singular Value Decomposition (SVD)** of any matrix $A$ expresses it as:
+
+$$ A = U \Sigma V^T $$
+:::
+
+Where:
+- $U$ contains **left singular vectors**,
+- $\Sigma$ is a diagonal matrix with **singular values**,
+- $V$ contains **right singular vectors**.
+
+
+SVD generalizes the eigendecomposition to non-square matrices. Every matrix $A$ can be factored as $A = U \Sigma V^T$.
+
+### Example
+
+Let:
+
+$$ A = \begin{bmatrix} 3 & 1 \\ 1 & 3 \end{bmatrix} $$
+
+The singular values are $\sigma_1 = 4$ and $\sigma_2 = 2$. The singular vectors form $U$ and $V$:
+
+$$ U = \begin{bmatrix} 0.71 & -0.71 \\ 0.71 & 0.71 \end{bmatrix}, \quad \Sigma = \begin{bmatrix} 4 & 0 \\ 0 & 2 \end{bmatrix}, \quad V = \begin{bmatrix} 0.71 & -0.71 \\ 0.71 & 0.71 \end{bmatrix} $$
+
+Thus, the SVD is:
+
+$$ A = U \Sigma V^T $$
+
+:::{.callout-note}
+**Applications in Recommender Systems**: SVD is widely used in **collaborative filtering** algorithms for matrix factorization in recommender systems.
+:::
+
+---
+
+# Comparative Study of the Decompositions
+
+| **Decomposition**       | **Form**                | **Properties** | **Use Cases**                           |
+|-------------------------|-------------------------|----------------|-----------------------------------------|
+| CR Decomposition         | $A = CR$              | Low-rank approximation | Dimensionality reduction in Data Science |
+| LU Decomposition         | $A = LU$              | Efficient solving of linear systems | Engineering, linear equations           |
+| Spectral Decomposition   | $A = Q \Lambda Q^T$   | Symmetric matrices | Principal Component Analysis (PCA), vibration analysis |
+| QR Decomposition         | $A = QR$              | Orthogonal matrix, least squares | Eigenvalue problems, optimization, linear regression |
+| Singular Value Decomposition (SVD) | $A = U \Sigma V^T$ | Any matrix, best low-rank approximation | Recommender systems, text mining        |
+
+Each decomposition has a unique set of properties, making them powerful tools in solving problems across engineering, data science, and machine learning.

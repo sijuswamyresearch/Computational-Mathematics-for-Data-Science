@@ -1,0 +1,31 @@
+---
+title: "Computational Mathematics for Data Science"
+format:
+  html:
+    include-before-body: helpers/remove-nav.html
+    include-after-body: helpers/remove-title.html
+---
+
+# 📑 Course Brief
+
+**Focus:** the focus of this course is to learn Data Science more effectively
+
+**How:** Problems Solving/ Class work/ Quizes
+
+# 🎯 Learning Objectives
+
+- You will discover the beauty of Mathematical Thinking
+- Distinguish Engineering sense from Commonsense
+- Practice how to  _use Mathematical knowledge_ in Engineering
+- Discover how to use _Computational Tools_ for doing Mathematics
+- Proceed to learn beyond
+
+
+-----------------
+
+**Select Academic Year/Term:**
+
+<a href="2024/index.qmd">
+    <button class="button-61">2024/25</button>
+</a>
+

@@ -1,0 +1,329 @@
+---
+title: "Analysis of Linear Systems: Exploring Transformation Which Gives a Particular Effect"
+filters:
+  - pyodide
+jupyter: python3
+execute: 
+  enabled: true
+---
+
+# Problem Statement
+
+Consider the linear system $Ax = b$, where $A$ is a $4 \times 3$ matrix constructed in different ways, and $b$ is a given vector defined as:
+
+$$
+b = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix}
+$$
+
+The goal is to analyze how the construction of $A$ affects the types of solutions available for the system. Specifically, we will explore three configurations of $A$ that lead to:
+
+1. Infinite solutions
+2. A unique solution
+3. No solution
+
+## Step 1: Create a Random Matrix $B$
+
+1. **Generate Random Integers**: Start by creating a random $4 \times 3$ matrix $B$ filled with single digit integer values.
+2. **Add Small Noise**: Introduce a small random noise (for example,add a very small value) to each element of the matrix $B$. This helps ensure that the rows are not linearly dependent and maintains the rank of the matrix.
+
+## Step 2: Construct Different Cases of Matrix $A$
+
+### Case 1: Infinite Solutions
+
+1. **Combine Rows**: Create a new matrix $K1$ by selecting the first two rows of $B$.
+2. **Add Linear Combinations**: Add additional rows to $K1$ that are linear combinations of the first two rows, for example:
+   - The sum of the two selected rows.
+   - A multiple of the two selected rows.
+3. **Form Matrix $A1$**: Extract the first three columns from $K1$ to form matrix $A1$. The rank of this matrix will be less than 3, indicating that the system $Ax = b$ has infinitely many solutions.
+
+### Case 2: Unique Solution
+
+1. **Select Rows**: Create a new matrix $K2$ by selecting the first three rows of $B$.
+2. **Add a New Row**: Add an additional row to $K2$ that is a linear combination of the three selected rows.
+3. **Form Matrix $A2$**: Extract the first three columns from $K2$ to create matrix $A2$. The rank of this matrix will be exactly 3, which implies that the system $Ax = b$ has a unique solution.
+
+### Case 3: No Solution
+
+1. **Select Rows**: Create matrix $A3$ by selecting the first three rows of $B$.
+2. **Add an Inconsistent Row**: Add a row to $A3$ that cannot be expressed as a linear combination of the first three rows (e.g., a new row with specific coefficients that do not align with the linear span of the first three).
+3. **Form Matrix $A3$**: The resulting matrix $A3$ will be inconsistent. This means that the system $Ax = b$ has no solution.
+
+## Step 3: Analyze the Solution Types
+
+1. **Rank Check**: For each constructed matrix $A$, check its rank to understand the nature of the solutions:
+   - For $A1$, expect a rank less than 3, indicating infinite solutions.
+   - For $A2$, expect a rank of 3, indicating a unique solution.
+   - For $A3$, expect a rank less than 4, indicating no solution.
+
+2. **Solve the System**: Attempt to solve the linear system $Ax = b$ for each case:
+   - For $A1$, the solution will have a parameterized form due to infinite solutions.
+   - For $A2$, a specific unique solution will be found.
+   - For $A3$, the system will indicate that no solution exists.
+
+## Extension Note
+
+ We also computationally solve different types of systems of equations using these inverses. Special emphasis is placed on interpreting the behavior of systems with varying ranks and showing how the pseudo inverse generalizes the concept of matrix inverses. 
+
+# Matrix Inverses
+
+Consider a matrix $A$ of dimensions $m \times n$. The type of inverse that applies depends on the rank and the shape of the matrix.
+
+## Left Inverse
+
+If $A$ is a matrix with **full column rank** (i.e., the columns of $A$ are linearly independent), a left inverse exists. For a matrix $A$ of dimensions $m \times n$, where $m > n$, the left inverse is denoted as:
+
+$$
+A_{\text{left}}^{-1} = (A^T A)^{-1} A^T
+$$
+
+This inverse satisfies:
+
+$$
+A_{\text{left}}^{-1} A = I
+$$
+
+### Condition for Existence
+
+- Full column rank: All columns are linearly independent.
+- More rows than columns: $m > n$.
+
+When the left inverse exists, we can use it to solve a system of equations of the form $Ax = b$.
+
+## Right Inverse
+
+If $A$ has **full row rank** (i.e., the rows of $A$ are linearly independent), a right inverse exists. For a matrix $A$ of dimensions $m \times n$, where $m < n$, the right inverse is denoted as:
+
+$$
+A_{\text{right}}^{-1} = A^T (A A^T)^{-1}
+$$
+
+This inverse satisfies:
+
+$$
+A A_{\text{right}}^{-1} = I
+$$
+
+### Condition for Existence
+
+- Full row rank: All rows are linearly independent.
+- More columns than rows: $n > m$.
+
+When the right inverse exists, we can solve $Ax = b$ using this inverse.
+
+## Pseudo Inverse
+
+The **Moore-Penrose pseudo inverse** is a generalization of the matrix inverse. It is denoted as $A^+$ and exists for any matrix, regardless of whether $A$ has full rank. It is used when either the left or right inverse does not exist or when the system is inconsistent or underdetermined.
+
+The pseudo inverse is defined as:
+
+$$
+A^+ = \text{argmin} \|Ax - b\|_2
+$$
+
+It provides the **least-squares solution** to the system $Ax = b$, which minimizes the residual when no exact solution exists.
+
+# Case Studies
+
+We now explore three different cases where we solve the system $Ax = b$ using either the left inverse, right inverse, or pseudo inverse, depending on the properties of the matrix.
+
+## Case 1: Infinite Solutions
+
+We construct a matrix $A1$ with linearly dependent rows, which results in infinite solutions to the system $A1x = b$. In this case, the rank of $A1$ is less than the number of columns, indicating an underdetermined system.
+
+The pseudo inverse is used to find a least-squares solution.
+
+$$
+A1 = 
+\begin{bmatrix}
+B(1,:) \\
+B(2,:) \\
+\alpha_1 B(1,:) + \alpha_2 B(2,:) \\
+\beta_1 B(1,:) + \beta_2 B(2,:)
+\end{bmatrix}
+$$
+
+where $B$ is a random matrix, and $\alpha, \beta$ are scalars.
+
+The system is underdetermined, and the pseudo inverse provides a solution.
+
+## Case 2: Unique Solution
+
+In this case, we construct a matrix $A2$ that has full column rank. This ensures a unique solution for $A2x = b$, as the system is neither underdetermined nor overdetermined. The left inverse is applicable here.
+
+$$
+A2 = 
+\begin{bmatrix}
+B(1,:) \\
+B(2,:) \\
+B(3,:) \\
+\alpha_1 B(1,:) + \alpha_2 B(2,:) + \alpha_3 B(3,:)
+\end{bmatrix}
+$$
+
+where $B$ is a random matrix, and $\alpha$ are scalars.
+
+Since the matrix has full column rank, the left inverse and pseudo inverse coincide.
+
+## Case 3: No Solution
+
+In this case, the matrix $A3$ is inconsistent, meaning that there is no exact solution for $A3x = b$. The system is overdetermined (more rows than columns), but the rows are not independent. As a result, the pseudo inverse provides a least-squares solution that minimizes the residual.
+
+$$
+A3 = 
+\begin{bmatrix}
+B(1,:) \\
+B(2,:) \\
+B(3,:) \\
+\gamma_1 B(1,:) + \gamma_2 B(2,:) + \gamma_3 B(3,:)
+\end{bmatrix}
+$$
+
+where $\gamma$ are chosen such that the system is inconsistent.
+
+`Matlab` code to solve the above system with given selected matrices is given below.
+
+
+:::{.panel-tabset}
+## Matlab
+
+```{.matlab}
+% Set a random seed for reproducibility (optional)
+rng(0);
+
+% Step 1: Create a random integer matrix B
+B = randi([1, 10], 4, 3) + 1e-10 * randn(4, 3); % Adding small noise
+
+% Given vector b
+b = [1; 2; 3; 4];
+
+% Case 1: Infinite solutions
+% K1: Combine the first two rows of B with linear combinations
+K1 = [B(1:2, :); [1, 1] * B(1:2, :); [1, 2] * B(1:2, :)];
+A1 = K1(:, 1:3); % Form matrix A1
+fprintf('Case 1: Infinite solutions\n');
+rankA1 = rank(A1);
+fprintf('Rank of A1: %d\n', rankA1);
+
+% Solving with pseudo inverse
+x_pseudo1 = pinv(A1) * b;
+fprintf('Pseudo inverse solution for A1:\n');
+disp(x_pseudo1);
+
+% Case 2: Unique solution
+% K2: Combine the first three rows of B and add a linear combination
+K2 = [B(1:3, :); [1, 1, 1] * B(1:3, :)];
+A2 = K2(:, 1:3); % Form matrix A2
+fprintf('Case 2: Unique solution\n');
+rankA2 = rank(A2);
+fprintf('Rank of A2: %d\n', rankA2);
+
+% Left inverse (A2 has full column rank, so left inverse exists)
+A2_left_inv = inv(A2' * A2) * A2'; % Moore-Penrose will coincide with this
+x_left2 = A2_left_inv * b;
+fprintf('Left inverse solution for A2:\n');
+disp(x_left2);
+
+% Pseudo inverse (should coincide with left inverse for full column rank)
+x_pseudo2 = pinv(A2) * b;
+fprintf('Pseudo inverse solution for A2:\n');
+disp(x_pseudo2);
+
+% Verify if left inverse coincides with pseudo inverse
+fprintf('Difference between left inverse and pseudo inverse for A2:\n');
+disp(norm(x_left2 - x_pseudo2));
+
+% Case 3: No solution
+% A3: Combine the first three rows of B and add an inconsistent row
+A3 = [B(1:3, :); [0.3, 0.5, 1] * B(1:3, :)];
+fprintf('Case 3: No solution\n');
+rankA3 = rank(A3);
+fprintf('Rank of A3: %d\n', rankA3);
+
+% Solving with pseudo inverse
+x_pseudo3 = pinv(A3) * b;
+fprintf('Pseudo inverse solution for A3 (least squares):\n');
+disp(x_pseudo3);
+
+% Since A3 is inconsistent, there is no exact solution, but the pseudo
+% inverse gives a least-squares solution.
+```
+## Python Code
+```{pyodide-python}
+import numpy as np
+from numpy.linalg import pinv, inv, matrix_rank
+
+# Set a random seed for reproducibility (optional)
+np.random.seed(0)
+
+# Step 1: Create a random integer matrix B
+M = np.random.randint(1, 11, (4, 3)) + 1e-10 * np.random.randn(4, 3)  # Adding small noise
+
+# Given vector b
+b = np.array([[1],[2], [3], [4]])
+B=np.hstack([B,b])
+# Case 1: Infinite solutions
+# K1: Combine the first two rows of B with linear combinations
+K1 = np.vstack([B[0:2, :], np.array([1, 1]) @ B[0:2, :], np.array([1, 2]) @ B[0:2, :]])
+A1 = K1[:, :3]  # Form matrix A1
+print('Case 1: Infinite solutions')
+rankA1 = matrix_rank(A1)
+print(f'Rank of A1: {rankA1}')
+
+# Solving with pseudo inverse
+x_pseudo1 = pinv(A1) @ b
+print('Pseudo inverse solution for A1:')
+print(x_pseudo1)
+
+# Case 2: Unique solution
+# K2: Combine the first three rows of B and add a linear combination
+K2 = np.vstack([B[0:3, :], np.array([1, 1, 1]) @ B[0:3, :]])
+A2 = K2[:, :3]  # Form matrix A2
+print('\nCase 2: Unique solution')
+rankA2 = matrix_rank(A2)
+print(f'Rank of A2: {rankA2}')
+
+# Left inverse (A2 has full column rank, so left inverse exists)
+A2_left_inv = inv(A2.T @ A2) @ A2.T  # Moore-Penrose will coincide with this
+x_left2 = A2_left_inv @ b
+print('Left inverse solution for A2:')
+print(x_left2)
+
+# Pseudo inverse (should coincide with left inverse for full column rank)
+x_pseudo2 = pinv(A2) @ b
+print('Pseudo inverse solution for A2:')
+print(x_pseudo2)
+
+# Verify if left inverse coincides with pseudo inverse
+print('Difference between left inverse and pseudo inverse for A2:')
+print(np.linalg.norm(x_left2 - x_pseudo2))
+
+# Case 3: No solution
+# A3: Combine the first three rows of B and add an inconsistent row
+A3 = np.vstack([B[0:3, :], np.array([0.3, 0.5, 1]) @ B[0:3, :]])
+print('\nCase 3: No solution')
+rankA3 = matrix_rank(A3)
+print(f'Rank of A3: {rankA3}')
+
+# Solving with pseudo inverse
+x_pseudo3 = pinv(A3) @ b
+print('Pseudo inverse solution for A3 (least squares):')
+print(x_pseudo3)
+
+# Since A3 is inconsistent, there is no exact solution, but the pseudo inverse gives a least-squares solution.
+
+# Since A3 is inconsistent, there is no exact solution, but the pseudo inverse gives a least-squares solution.
+```
+:::
+
+
+
+# Conclusion
+
+By manipulating the matrix $A$ derived from $B$ and observing the effects on the rank and types of solutions to the linear system $Ax = b$, we gain insight into the fundamental theorem of algebra. This understanding helps us determine conditions for existence and the number of solutions based on matrix ranks.
+
+- **Left Inverse**: Used when the matrix has full column rank and provides an exact solution when applicable.
+- **Right Inverse**: Used when the matrix has full row rank and provides an exact solution when applicable.
+- **Pseudo Inverse**: Generalizes both the left and right inverse and is always available. It provides a least-squares solution when the system is either underdetermined or overdetermined.
+
+The pseudo inverse coincides with the respective left or right inverse when the matrix has full rank, ensuring consistency in the solution.
+

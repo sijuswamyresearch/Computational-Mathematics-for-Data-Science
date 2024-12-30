@@ -1,0 +1,281 @@
+---
+title: "Eigenvalues and Eigenvectors: Unlocking the Essence of Linear Transformations"
+filters:
+  - pyodide
+jupyter: python3
+execute: 
+  enabled: true
+---
+
+## Introduction
+
+Eigenvalues and eigenvectors provide crucial insights into the behavior of linear transformations represented by square matrices. This section explores their definitions, methods for finding them, applications in matrix diagonalization, special cases such as symmetric matrices, and their use in solving differential equations.
+
+::: {.callout-note}
+### Key Concepts
+- **Eigenvalue equation**: $A\mathbf{x} = \lambda \mathbf{x}$
+- **Diagonalization**: Simplifying matrix operations through eigenvectors
+- **Symmetric matrices**: Special properties for real eigenvalues and orthogonal eigenvectors
+- **Applications**: Solving systems of linear differential equations and analyzing matrix structures in engineering
+:::
+
+### Definition and Calculation: The Eigenvalue Equation
+
+Eigenvalues and eigenvectors are defined by the fundamental **eigenvalue equation**:
+
+$$
+A \mathbf{x} = \lambda \mathbf{x}
+$$
+
+where:
+- $A$ is a square $n \times n$ matrix,
+- $\mathbf{x}$ is a non-zero vector (the **eigenvector**),
+- $\lambda$ is a scalar (the **eigenvalue**).
+
+This equation states that applying the matrix $A$ to an eigenvector results in scaling the vector by the eigenvalue $\lambda$. Geometrically, the eigenvector does not change its direction, only its magnitude.
+
+To calculate eigenvalues, we rearrange the equation as:
+
+$$
+(A - \lambda I)\mathbf{x} = 0
+$$
+
+For non-trivial solutions, $(A - \lambda I)$ must be singular, meaning:
+
+$$
+\det(A - \lambda I) = 0
+$$
+
+This is called the **characteristic equation**. Solving it yields the eigenvalues, and substituting these values back into the equation gives the corresponding eigenvectors.
+
+#### Example 1: Finding Eigenvalues and Eigenvectors
+
+Consider the matrix:
+
+$$
+A = \begin{bmatrix} 0.8 & 0.3 \\ 0.2 & 0.7 \end{bmatrix}
+$$
+
+Step 1: Solve the characteristic equation:
+
+$$
+\det(A - \lambda I) = \det\left(\begin{bmatrix} 0.8 & 0.3 \\ 0.2 & 0.7 \end{bmatrix} - \lambda \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\right) = 0
+$$
+
+$$
+\det\begin{bmatrix} 0.8 - \lambda & 0.3 \\ 0.2 & 0.7 - \lambda \end{bmatrix} = (0.8 - \lambda)(0.7 - \lambda) - (0.3)(0.2) = 0
+$$
+
+$$
+(0.8 - \lambda)(0.7 - \lambda) - 0.06 = 0
+$$
+
+Expanding and solving the quadratic equation:
+
+$$
+\lambda^2 - 1.5\lambda + 0.5 = 0
+$$
+
+$$
+\lambda_1 = 1, \quad \lambda_2 = 0.5
+$$
+
+Step 2: Find the corresponding eigenvectors by solving $(A - \lambda I)\mathbf{x} = 0$ for each eigenvalue.
+
+For $\lambda_1 = 1$:
+
+$$
+(A - I)\mathbf{x} = \begin{bmatrix} -0.2 & 0.3 \\ 0.2 & -0.3 \end{bmatrix} \mathbf{x} = 0
+$$
+
+Solving this system gives the eigenvector $\mathbf{x}_1 = \begin{bmatrix} 0.6 \\ 0.4 \end{bmatrix}$.
+
+For $\lambda_2 = 0.5$:
+
+$$
+(A - 0.5I)\mathbf{x} = \begin{bmatrix} 0.3 & 0.3 \\ 0.2 & 0.2 \end{bmatrix} \mathbf{x} = 0
+$$
+
+The eigenvector is $\mathbf{x}_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$.
+
+:::{.panel-tabset}
+## Syntax
+
+```{.python}
+# to print a string "prompt"
+print("prompt")
+# to print the value of a variable
+print(variable)
+```
+## DIY
+```{pyodide-python}
+print("prompt")
+variable=10
+print(variable)
+```
+:::
+
+```{pyodide-python}
+# Note: change this value for a different result
+num = 8 
+
+# To take the input from the user
+#num = float(input('Enter a number: '))
+
+num_sqrt = num ** 0.5
+print('The square root of %0.3f is %0.3f'%(num ,num_sqrt))
+```
+
+### Diagonalization: Simplifying Matrix Powers
+
+Eigenvalues and eigenvectors enable **diagonalization**, a powerful method for simplifying matrix operations, especially powers of matrices. The matrix $A$ can be expressed as:
+
+$$
+A = X \Lambda X^{-1}
+$$
+
+where $X$ is the matrix of eigenvectors, and $\Lambda$ is a diagonal matrix of eigenvalues. This transformation allows for easy computation of matrix powers:
+
+$$
+A^k = X \Lambda^k X^{-1}
+$$
+
+Diagonalizing $A$ reduces the problem of computing $A^k$ to simple multiplications with diagonal elements.
+
+#### Example 2: Diagonalizing a Matrix
+
+Given:
+
+$$
+A = \begin{bmatrix} 1 & 2 \\ 0 & 3 \end{bmatrix}
+$$
+
+Find $A^4$ using diagonalization.
+
+Step 1: Find eigenvalues by solving $\det(A - \lambda I) = 0$:
+
+$$
+\det\begin{bmatrix} 1 - \lambda & 2 \\ 0 & 3 - \lambda \end{bmatrix} = (1 - \lambda)(3 - \lambda) = 0
+$$
+
+$$
+\lambda_1 = 1, \quad \lambda_2 = 3
+$$
+
+Step 2: Find eigenvectors by solving $(A - \lambda I)\mathbf{x} = 0$.
+
+For $\lambda_1 = 1$: $\mathbf{x}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$.
+
+For $\lambda_2 = 3$: $\mathbf{x}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$.
+
+Step 3: Form $X$ and $\Lambda$:
+
+$$
+X = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}, \quad \Lambda = \begin{bmatrix} 1 & 0 \\ 0 & 3 \end{bmatrix}
+$$
+
+Step 4: Compute $A^4$ using $A^4 = X \Lambda^4 X^{-1}$:
+
+$$
+\Lambda^4 = \begin{bmatrix} 1 & 0 \\ 0 & 81 \end{bmatrix}
+$$
+
+Thus, $A^4$ can be computed efficiently.
+
+### Special Cases: Symmetric Matrices and Positive Definiteness
+
+Symmetric matrices ($A = A^T$) have special properties:
+
+- All eigenvalues are real.
+- Eigenvectors corresponding to distinct eigenvalues are orthogonal.
+
+This leads to the **spectral theorem**, which states that symmetric matrices can be diagonalized by an orthogonal matrix:
+
+$$
+A = Q \Lambda Q^T
+$$
+
+where $Q$ is an orthogonal matrix of eigenvectors and $\Lambda$ is a diagonal matrix of eigenvalues.
+
+::: {.callout-note}
+### Key Concepts
+- **Symmetric matrix**: $A = A^T$
+- **Real eigenvalues**: Eigenvalues of symmetric matrices are always real.
+- **Orthogonal eigenvectors**: Eigenvectors corresponding to distinct eigenvalues are orthogonal.
+:::
+
+#### Example 3: Symmetric Matrix Diagonalization
+
+Consider the symmetric matrix:
+
+$$
+A = \begin{bmatrix} 4 & 1 \\ 1 & 3 \end{bmatrix}
+$$
+
+Find the eigenvalues and eigenvectors.
+
+Step 1: Solve the characteristic equation:
+
+$$
+\det(A - \lambda I) = 0
+$$
+
+$$
+\det\begin{bmatrix} 4 - \lambda & 1 \\ 1 & 3 - \lambda \end{bmatrix} = (4 - \lambda)(3 - \lambda) - 1 = 0
+$$
+
+Expanding the quadratic:
+
+$$
+\lambda^2 - 7\lambda + 11 = 0
+$$
+
+The eigenvalues are $\lambda_1 = 5, \quad \lambda_2 = 2$.
+
+Step 2: Solve for eigenvectors:
+
+For $\lambda_1 = 5$: $\mathbf{x}_1 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$.
+
+For $\lambda_2 = 2$: $\mathbf{x}_2 = \begin{bmatrix} -1 \\ 1 \end{bmatrix}$.
+
+Thus, the matrix can be diagonalized as $A = Q \Lambda Q^T$ where:
+
+$$
+Q = \begin{bmatrix} 1 & -1 \\ 1 & 1 \end{bmatrix}, \quad \Lambda = \begin{bmatrix} 5 & 0 \\ 0 & 2 \end{bmatrix}
+$$
+
+### Applications: Differential Equations and Engineering
+
+Eigenvalues and eigenvectors are essential in solving systems of linear differential equations of the form:
+
+$$
+\frac{d\mathbf{u}}{dt} = A\mathbf{u}
+$$
+
+Solutions are of the form $\mathbf{u}(t) = c_1 e^{\lambda_1 t}\mathbf{x}_1 + c_2 e^{\lambda_2 t}\mathbf{x}_2 + \cdots$
+
+This approach simplifies the analysis of the system's stability and long-term behavior.
+
+#### Example 4: Solving a System of Differential Equations
+
+Consider the system:
+
+$$
+\frac{d\mathbf{u}}{dt} = \begin{bmatrix} 1 & 2 \\ 2 & 1 \end{bmatrix} \mathbf{u}
+$$
+
+Solve the system using eigenvalue methods.
+
+Step 1: Find eigenvalues and eigenvectors.
+
+Eigenvalues: $\lambda_1 = 3, \lambda_2 = -1$.
+
+Eigenvectors: $\mathbf{x}_1 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}, \mathbf{x}_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$.
+
+Step 2: General solution:
+
+$$
+\mathbf{u}(t) = c_1 e^{3t} \begin{bmatrix} 1 \\ 1 \end{bmatrix} + c_2 e^{-t} \begin{bmatrix} 1 \\ -1 \end{bmatrix}
+$$
+
+This completes the solution of the system.

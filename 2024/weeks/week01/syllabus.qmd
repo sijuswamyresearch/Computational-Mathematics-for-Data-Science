@@ -1,0 +1,15 @@
+Matrices, Rank, and Gaussian Elimination-vector spaces and subspaces, linear independence, basis and dimension, four fundamental subspaces. Orthogonality - perpendicular vectors and orthogonal subspaces, inner products and projections onto lines, projections and least square applications, orthogonal basis- Gram Schmidt orthogonalization, Eigenvalues and Eigenvectors – Singular Value Decomposition, diagonal form of a matrix, Positive Definite Matrices - minima, maxima and saddle points, tests for positive definiteness, semi-definite and indefinite matrices. 
+Introduction -Single Variable calculus and multi-variable calculus 
+Introduction - mathematical optimization, least-squares and linear programming, convex and nonlinear optimization. convex sets, convex optimization problems - optimization problem in standard form, convex optimization problems, quasi-convex optimization, linear optimization, quadratic optimization, generalized inequality constraints, unconstrained minimization- gradient descent method, Conjugate gradient method, steepest descent method, Newton's method.
+
+> Textbooks / References
+
+- Gilbert Strang, Linear Algebra and its Applications, Fourth Edition, Cambridge University Press. 2009.
+- Gene H. Golub and V. Van Loan, Matrix Computations, Third Edition, John Hopkins University Press, Baltimore, 1996. 
+- David C. Lay, Linear Algebra and Its Applications, Pearson Addison Wesley, 2002.
+- Strang, Gilbert. Linear algebra and learning from data. Cambridge: Wellesley-Cambridge Press, 2019.
+- Kalyanmoy, Deb. Optimization for engineering design: Algorithms and examples. Prentice-Hall of India Pvt. Limited, 2012.
+- Chong, Edwin KP, and Stanislaw H. Zak. An introduction to optimization. John Wiley & Sons, 2004.
+- Bhatti, M. Asghar. Practical Optimization Methods: With Mathematica® Applications. Springer Science & Business Media, 2012.
+- Stephen P. Boyd, and Lieven Vandenberghe. Convex optimization. Cambridge university press, 2004.
+- Lecture notes on optimization.

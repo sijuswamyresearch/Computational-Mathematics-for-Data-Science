@@ -1,0 +1,113 @@
+---
+title: "Solving Linear Equations: A Core Focus of Linear Algebra"
+---
+
+## Solving Linear Equations
+
+This section focuses on one of the central applications of linear algebra: **solving systems of linear equations**. It outlines key concepts and techniques for finding solutions to equations of the form `Ax = b`, where `A` is a square `n x n` matrix, `x` is a vector of unknowns, and `b` is a known vector.
+
+### Inverse Matrices: A Direct Approach
+
+The most straightforward way to solve `Ax = b` is to find the **inverse matrix** of `A`, denoted as `A^{-1}`. If `A^{-1}` exists, then the solution `x` is given by:
+
+$$
+x = A^{-1}b
+$$
+
+However, finding the inverse matrix can be computationally expensive, especially for large matrices. Furthermore, not all matrices have inverses. A matrix is **invertible** if and only if its determinant is non-zero.
+
+#### Key Properties of Inverse Matrices
+
+- **Uniqueness**: If an inverse matrix exists, it is unique.
+- **Relationship to Identity Matrix**: The product of a matrix and its inverse is the identity matrix ($A^{-1}A = I$ and $AA^{-1} = I$).
+- **Invertibility and Linear Independence**: A matrix is invertible if and only if its rows (and columns) are linearly independent.
+
+### Triangular Matrices and Back Substitution
+
+Solving systems of linear equations becomes significantly easier when the matrix `A` is **triangular**. A triangular matrix has all its entries either above or below the main diagonal equal to zero. There are two types of triangular matrices:
+
+- **Upper Triangular**: All entries below the main diagonal are zero.
+- **Lower Triangular**: All entries above the main diagonal are zero.
+
+#### Example: Solving via Back Substitution
+
+Consider an upper triangular system `Ux = c`:
+
+$$
+\begin{bmatrix} 
+2 & 3 & 4 \\ 
+0 & 5 & 6 \\ 
+0 & 0 & 7 
+\end{bmatrix}
+\begin{bmatrix} 
+x_1 \\ 
+x_2 \\ 
+x_3 
+\end{bmatrix} = 
+\begin{bmatrix} 
+19 \\ 
+17 \\ 
+14 
+\end{bmatrix}
+$$
+
+We start by solving for $x_3$, then substitute this value into the second equation to find $x_2$, and finally into the first equation to find $x_1$. The solution is:
+
+$$
+x_3 = 2, \quad x_2 = 1, \quad x_1 = 4
+$$
+
+### Elimination: Transforming Matrices to Triangular Form
+
+**Elimination** is a technique used to transform a general square matrix into an upper triangular matrix, making it easier to solve by back substitution. This process involves a sequence of row operations, aiming to introduce zeros below the diagonal.
+
+#### Example: Row Elimination
+
+Consider the matrix:
+
+$$
+A = \begin{bmatrix}
+2 & 3 & 4 \\
+4 & 11 & 14 \\
+2 & 8 & 17
+\end{bmatrix}
+$$
+
+After performing elimination steps, the matrix is transformed into:
+
+$$
+U = \begin{bmatrix}
+2 & 3 & 4 \\
+0 & 5 & 6 \\
+0 & 0 & 7
+\end{bmatrix}
+$$
+
+This transformation allows for efficient solving using **LU factorization**, where:
+
+$$
+A = LU
+$$
+
+### Row Exchanges: Handling Zero Pivots
+
+During elimination, if a diagonal element (pivot) is zero, we perform **row exchanges**. Row exchanges are represented by **permutation matrices**. The general solution for `Ax = b` involves:
+
+1. Find `P` such that `PA = LU`.
+2. Solve `Ly = Pb` using forward substitution.
+3. Solve `Ux = y` using back substitution.
+
+### Transposes and Symmetric Matrices
+
+The **transpose** of a matrix `A` is denoted as `A^T`. A matrix is **symmetric** if its transpose equals the original matrix ($S^T = S$).
+
+#### Properties of Symmetric Matrices:
+
+- **Real Eigenvalues**: The eigenvalues of a symmetric matrix are real.
+- **Orthogonal Eigenvectors**: Eigenvectors corresponding to distinct eigenvalues are orthogonal.
+
+### Efficiency Considerations: Beyond Inverse Calculation
+
+While calculating $A^{-1}$ provides a direct solution, it is often inefficient. For large systems, techniques like **LU decomposition** with forward and backward substitution are preferred, offering computational efficiency.
+
+In summary, Section 2 of "Computational Linear Algebra" presents key methods for solving linear equations, emphasizing both theoretical foundations and practical efficiency.

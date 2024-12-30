@@ -1,0 +1,165 @@
+---
+title: "Singular Value Decomposition (SVD): A Powerful Tool for Matrix Analysis"
+format: html
+---
+
+
+Seventh session of the "Computational Linear Algebra" introduces the **Singular Value Decomposition (SVD)**, a fundamental matrix factorization that decomposes any matrix, even rectangular and non-invertible ones, into a product of three matrices with special properties: two orthogonal matrices and a diagonal matrix. This decomposition has wide-ranging applications in data analysis, image processing, recommendation systems, and other fields.
+
+### Definition and Construction: Orthogonal Matrices and Singular Values
+
+The SVD of an $m \times n$ matrix $A$ is given by:
+
+$$
+A = U\Sigma V^{T}
+$$
+
+where:
+
+- **$U$** is an $m \times m$ orthogonal matrix, meaning its columns are orthonormal (orthogonal and of unit length).
+- **$\Sigma$** is an $m \times n$ diagonal matrix containing the **singular values** of $A$, denoted as $\sigma_1, \sigma_2, \dots, \sigma_r$, where $r$ is the rank of $A$. The singular values are non-negative and conventionally arranged in descending order ($\sigma_1 \geq \sigma_2 \geq \dots \geq \sigma_r > 0$).
+- **$V$** is an $n \times n$ orthogonal matrix.
+
+The columns of $U$ are called the **left singular vectors** of $A$, and the columns of $V$ are called the **right singular vectors** of $A$.
+
+> ### Keynotes:
+> 1. **Orthogonal Matrix**: A matrix is orthogonal if its columns are mutually orthogonal unit vectors.
+> 2. **Singular Values**: These are the diagonal elements of $\Sigma$, and they provide important information about the scaling properties of the matrix.
+> 3. **Decomposition**: SVD decomposes a matrix into rotations and scalings.
+
+### Calculation of $U$ and $V^{T}$
+
+1. **Right Singular Vectors and $V$**: The **right singular vectors** of $A$, which form the columns of $V$, are the eigenvectors of $A^T A$. These eigenvectors are obtained by solving the eigenvalue problem:
+
+$$
+A^T A v_i = \lambda_i v_i
+$$
+
+where $\lambda_i$ are the eigenvalues of $A^T A$. The eigenvectors corresponding to these eigenvalues form the matrix $V$. The right singular vectors are the unit eigenvectors of $A^T A$.
+
+2. **Singular Values and $\Sigma$**: The singular values $\sigma_i$ are the square roots of the eigenvalues $\lambda_i$ of $A^T A$. These singular values form the diagonal entries of the matrix $\Sigma$.
+
+3. **Left Singular Vectors and $U$**: The **left singular vectors** of $A$, which form the columns of $U$, are obtained by multiplying $A$ by each right singular vector and normalizing:
+
+$$
+u_i = \frac{A v_i}{\sigma_i}
+$$
+
+The resulting vectors are the left singular vectors, which are the columns of $U$. If $A$ is an $m \times n$ matrix, then $U$ will be an $m \times m$ matrix whose columns are orthonormal vectors.
+
+> ### Keynotes:
+> 1. **Right Singular Vectors ($V$)**: The eigenvectors of $A^T A$ give the right singular vectors.
+> 2. **Singular Values**: These are the square roots of the eigenvalues of $A^T A$ and form the diagonal elements of $\Sigma$.
+> 3. **Left Singular Vectors ($U$)**: These are calculated as $u_i = \frac{A v_i}{\sigma_i}$, where $v_i$ are the right singular vectors and $\sigma_i$ are the singular values.
+
+### Sample Problem: Compute the SVD of a Matrix
+
+Consider the matrix:
+
+$$
+A = \begin{bmatrix} 3 & 0 \\ 4 & 5 \end{bmatrix}
+$$
+
+> Step 1: Calculate $A^T A$
+
+$$
+A^T A = \begin{bmatrix} 3 & 4 \\ 0 & 5 \end{bmatrix} \begin{bmatrix} 3 & 0 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} 25 & 20 \\ 20 & 25 \end{bmatrix}
+$$
+
+> Step 2: Calculate the Eigenvalues of $A^T A$
+
+The eigenvalues $\lambda$ are the solutions to the characteristic equation $\det(A^T A - \lambda I) = 0$:
+
+$$
+\det \left( \begin{bmatrix} 25 & 20 \\ 20 & 25 \end{bmatrix} - \lambda \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \right) = 0
+$$
+
+Solving this gives $\lambda_1 = 45$ and $\lambda_2 = 5$.
+
+> Step 3: Calculate the Singular Values
+
+The singular values are the square roots of the eigenvalues of $A^T A$:
+
+$$
+\sigma_1 = \sqrt{45} \approx 6.708, \quad \sigma_2 = \sqrt{5} \approx 2.236
+$$
+
+> Step 4: Calculate the Right Singular Vectors $V$
+
+Next, calculate the eigenvectors of $A^T A$ to obtain the right singular vectors:
+
+For $\lambda_1 = 45$:
+
+$$
+\left( A^T A - 45 I \right) v = 0 \quad \Rightarrow \quad \begin{bmatrix} -20 & 20 \\ 20 & -20 \end{bmatrix} v = 0
+$$
+
+Solving this gives the right singular vector $v_1 = \begin{bmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{bmatrix}$.
+
+For $\lambda_2 = 5$:
+
+$$
+\left( A^T A - 5 I \right) v = 0 \quad \Rightarrow \quad \begin{bmatrix} 20 & 20 \\ 20 & 20 \end{bmatrix} v = 0
+$$
+
+Solving this gives $v_2 = \begin{bmatrix} 1/\sqrt{2} \\ -1/\sqrt{2} \end{bmatrix}$.
+
+Thus, $V = \begin{bmatrix} 1/\sqrt{2} & 1/\sqrt{2} \\ 1/\sqrt{2} & -1/\sqrt{2} \end{bmatrix}$.
+
+> Step 5: Calculate the Left Singular Vectors $U$
+
+Using $U = A V \Sigma^{-1}$, we can calculate the left singular vectors. First, compute $A v_1$ and $A v_2$, then normalize to get $u_1$ and $u_2$.
+
+> MATLAB Code for SVD Calculation
+
+```matlab
+% Define the matrix A
+A = [3 0; 4 5];
+
+% Perform SVD
+[U, S, V] = svd(A);
+
+% Display the results
+disp('U = ');
+disp(U);
+disp('S = ');
+disp(S);
+disp('V = ');
+disp(V);
+```
+
+## Applications: Dimensionality Reduction, Image Compression, and More
+
+The SVD has numerous applications in various fields, including:
+
+### Dimensionality Reduction
+By retaining only the largest singular values and corresponding singular vectors, we can approximate the original matrix $A$ by a lower-rank matrix, effectively reducing the dimensionality of the data. This technique, known as Principal Component Analysis (PCA), is widely used in data analysis and machine learning to extract the most important features from a dataset.
+
+$$
+A_k = U_k \Sigma_k V_k^T
+$$
+
+Here, $A_k$ is the approximation of $A$ using only the top $k$ singular values and their corresponding singular vectors.
+
+### Image Compression
+The SVD can be used to compress images by representing them as a sum of rank-one matrices, each corresponding to a singular value and its associated singular vectors. By discarding smaller singular values and their corresponding components, we can achieve significant compression while retaining the essential features of the image. 
+
+An image $I$ can be compressed as:
+
+$$
+I \approx U_k \Sigma_k V_k^T
+$$
+
+where $k$ singular values are used for the approximation. This significantly reduces the size of the matrix while preserving the visual quality.
+
+### Recommendation Systems
+The SVD is a key technique in matrix factorization methods used in recommendation systems, such as the one employed by Netflix to predict user preferences based on historical data. By decomposing a user-item matrix, the SVD extracts latent features that can be used to predict unknown ratings and recommend items.
+
+For example, a user-rating matrix $R$ is factorized as:
+
+$$
+R \approx U \Sigma V^T
+$$
+
+where the singular values capture the most significant correlations between users and items, allowing for personalized recommendations.
+

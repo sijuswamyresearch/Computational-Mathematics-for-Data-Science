@@ -1,0 +1,88 @@
+---
+title: "Computational Mathematics for Data Science"
+subtitle: "Academic Year: 2024/25"
+format: html
+---
+
+::: {.callout-important collapse=false}
+## 📢 Important
+
+(09/10/2024)
+- [🗓️ Unifying Geometry with Algebra:](/2024/weeks/week01/algebra_geometry.qmd) is now available!
+
+- [🗓️ Class Work-1](/2024/weeks/week01/class_work1.qmd) is now available!
+
+- [🗓️ Class Work-2](/2024/weeks/week02/eigen_value_vector.qmd) is now available!
+
+:::
+
+
+# 🧑🏻‍🏫 Our Team
+
+::: {.panel-tabset}
+## Course Convenor
+
+
+![](/figures/people/soman_sir.jpg){fig-align="left" fig-alt="Photo of Dr. MY NAME" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;"}  
+**[Dr. Soman K P](#)** <br/>
+_Professor and Dean_ <br/>
+[Amrita School of Artificial Intelligence](#)</a><br/>
+📧 [kp_soman@amrita.edu](mailto:)
+
+Office Hours: 
+
+- When: 09:00AM-16:30PM
+- Where: ASAI
+- How to book:
+
+## Supporting Team
+
+![](/figures/people/vipin.jpg){fig-align="left" fig-alt="Photo of TA_NAME" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;"}  
+**[Dr. Vipin V](#)** <br/>
+Assistant Professor, CEN <br> 
+📧 [EMAIL](mailto:)
+
+![](/figures/people/Swamy.jpg){fig-align="left" fig-alt="Photo of TA_NAME" style="object-fit: cover;width:5em;height:5em;border-radius: 50%;"}  
+**[Mr. Siju K S](#)** <br/>
+Research Scholar at CEN <br> 
+📧 [EMAIL](mailto:)
+
+
+
+
+:::
+
+# 📍 Lecture
+
+Fridays 2pm-4pm at PLACE
+
+# 💻 Class Groups
+
+::: {style="display:inline-block;width: 28.5%;border-style: dotted;border-width: 1px;border-color: &quot;#fefefe&quot;; margin:1%;padding:1.5%;background-color:#fafafa"}
+**Group 01**
+
+- 📆 Mondays
+- ⌚ 09:00 - 10:30
+- 📍 
+- 🧑‍🏫 _TA_NAME_
+:::
+
+::: {style="display:inline-block;width: 28.5%;border-style: dotted;border-width: 1px;border-color: &quot;#fefefe&quot;; margin:1%;padding:1.5%;background-color:#fafafa"}
+**Group 02**
+
+            
+- 📆 Mondays
+- ⌚ 10:30 - 12:00
+- 📍 
+- 🧑‍🏫 _TA_NAME_
+            
+:::
+
+::: {style="display:inline-block;width: 28.5%;border-style: dotted;border-width: 1px;border-color: &quot;#fefefe&quot;; margin:1%;padding:1.5%;background-color:#fafafa"}
+**Group 03**
+
+- 📆 Fridays
+- ⌚ 16:00 - 17:30
+- 📍 
+- 🧑‍🏫 _TA_NAME_
+:::

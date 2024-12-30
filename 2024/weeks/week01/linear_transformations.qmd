@@ -1,0 +1,113 @@
+---
+title: "Linear Transformations: The Essence of Linearity"
+---
+
+
+Linear transformations lie at the heart of linear algebra. They map vectors between vector spaces while preserving the structure of vector addition and scalar multiplication. In this section, the concept of **linear transformations** is introduced as a way to extend our understanding of matrix operations into more abstract and general contexts.
+
+### Definition: Mapping Vectors While Preserving Linearity
+
+A **linear transformation**, denoted by $T$, is a mapping between two vector spaces, $V$ (input space) and $Y$ (output space), that adheres to the principle of linearity:
+
+$$
+T(c\mathbf{v} + d\mathbf{w}) = cT(\mathbf{v}) + dT(\mathbf{w})
+$$
+
+This equation encapsulates the essence of linearity:
+
+- **Additivity**: Transforming the sum of two vectors is equivalent to transforming each vector individually and then adding the transformed results.
+- **Homogeneity**: Scaling a vector by a constant and then transforming it is the same as transforming the vector first and then scaling the result.
+
+Examples of linear transformations include **rotations in the x-y plane**, and the **derivative operation** in function spaces.
+
+### Matrices as Representations: A Basis-Dependent Encoding
+
+Linear transformations can be represented by matrices, though this representation depends on the choice of bases for the vector spaces involved. Here’s how to construct the matrix $A$ that represents a linear transformation $T$:
+
+1. **Choose bases**: Select a basis $\{\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n\}$ for the input space $V$, and a basis $\{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_m\}$ for the output space $Y$.
+2. **Transform basis vectors**: Apply the transformation $T$ to each input basis vector $\mathbf{v}_j$.
+3. **Express transformed vectors in the output basis**: Write each transformed vector $T(\mathbf{v}_j)$ as a linear combination of the output basis vectors:
+
+$$
+T(\mathbf{v}_j) = a_{1j} \mathbf{y}_1 + a_{2j} \mathbf{y}_2 + \dots + a_{mj} \mathbf{y}_m
+$$
+
+4. **Form the matrix**: The coefficients $a_{ij}$ form the entries of the matrix $A$, where the $j$-th column of $A$ corresponds to the transformation of the $j$-th input basis vector.
+
+This matrix $A$ encodes the action of the linear transformation $T$ on any vector expressed in the chosen input basis. When $A$ is applied to a coordinate vector, it returns the transformed vector in terms of the output basis.
+
+### Example: Rotation in the Plane
+
+Consider a rotation by an angle $\theta$ in the plane. The corresponding transformation matrix $A_\theta$ is given by:
+
+$$
+A_\theta = 
+\begin{pmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{pmatrix}
+$$
+
+This matrix represents the linear transformation that rotates a vector in $\mathbb{R}^2$ by an angle $\theta$.
+
+### Basis Changes: Transforming the Matrix Representation
+
+The matrix representation of a linear transformation depends on the choice of bases for both the input and output spaces. Changing these bases alters the matrix representation. Let $M$ represent $T$ with respect to new bases $\{V_1, V_2, \dots, V_n\}$ in $V$ and $\{Y_1, Y_2, \dots, Y_m\}$ in $Y$. The new matrix $M$ is related to the old matrix $A$ by:
+
+$$
+M = Y^{-1} A V
+$$
+
+where:
+
+- $V$ is the change-of-basis matrix for the input space, and
+- $Y$ is the change-of-basis matrix for the output space.
+
+### Example: Scaling and Shearing Transformation
+
+Consider a linear transformation $T$ that scales a vector by a factor of 2 in the $x$-direction and shears it in the $y$-direction. The corresponding matrix in standard basis is:
+
+$$
+A =
+\begin{pmatrix}
+2 & 1 \\
+0 & 1
+\end{pmatrix}
+$$
+
+If we change the basis of the input space using a matrix $V$ and of the output space using a matrix $Y$, the transformation matrix changes accordingly.
+
+### Significance: Unifying Framework for Linearity
+
+Linear transformations provide a unified framework for understanding key concepts in linear algebra. The matrix representation of a linear transformation allows us to interpret matrix operations in terms of transformations:
+
+- **Matrix multiplication as composition of transformations**: Multiplying two matrices corresponds to composing the linear transformations they represent.
+- **Invertible matrices as invertible transformations**: A matrix is invertible if and only if the corresponding linear transformation is invertible.
+- **Eigenvectors as invariant directions**: Eigenvectors of a matrix represent directions in the input space that remain unchanged (up to scaling) under the corresponding linear transformation.
+
+### Applications of Linear Transformations
+
+#### 1. Computer Graphics and Animations
+
+Linear transformations are fundamental in computer graphics, where they are used to rotate, scale, and translate objects in 2D and 3D spaces. The transformation of an object is often represented by multiplying the vector of points defining the object by a transformation matrix.
+
+#### 2. Differential Equations
+
+In solving systems of linear differential equations, linear transformations are used to diagonalize the system’s matrix and simplify the solution process. This allows for easier integration of the system by working with independent variables.
+
+#### 3. Data Analysis and Machine Learning
+
+In machine learning, linear transformations form the basis for techniques like **Principal Component Analysis (PCA)**, which transforms data into a new basis defined by its principal components. This reduces dimensionality while preserving the most significant features of the data.
+
+#### 4. Control Systems
+
+In control theory, linear transformations are used to model and analyze dynamic systems. They simplify complex systems by transforming them into more manageable representations, which can be used to predict and control system behavior.
+
+:::{.callout-note}
+### Key Concepts:
+- **Linear Transformation**: A mapping between two vector spaces that preserves vector addition and scalar multiplication.
+- **Matrix Representation**: Every linear transformation can be represented by a matrix, but this depends on the choice of input and output bases.
+- **Change of Basis**: Changing the basis of either the input or output space transforms the matrix representation of the linear transformation.
+- **Applications**: Linear transformations are used in graphics, differential equations, machine learning, and control systems.
+
+:::

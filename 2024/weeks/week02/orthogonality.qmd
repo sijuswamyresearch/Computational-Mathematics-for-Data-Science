@@ -1,0 +1,113 @@
+---
+title: "Orthogonality: A Powerful Tool in Linear Algebra"
+
+---
+
+
+This session of the "Computational Linear Algebra" focuses on **orthogonality**, a fundamental concept that plays a crucial role in understanding the geometry of vector spaces and solving linear algebra problems. This section explores the orthogonality relationships between the four fundamental subspaces associated with a matrix and introduces the powerful techniques of **projections** and **orthogonal matrices**.
+
+### Orthogonality of Vectors and Subspaces: Perpendicularity and Independence
+
+Two vectors **x** and **y** are considered **orthogonal** if their dot product is zero: **x**<sup>T</sup>**y** = 0. In geometric terms, this means the vectors are perpendicular to each other. The concept extends to **complex vectors**, where orthogonality is defined using the conjugate transpose: **u**<sup>H</sup>**v** = 0.
+
+::: {.callout-note title="Key Concept"}
+**Orthogonality** implies that two vectors are perpendicular, enhancing the understanding of their independence and relationships in vector spaces.
+:::
+
+The idea of orthogonality extends to **subspaces**: Two subspaces **V** and **W** are orthogonal if every vector in **V** is orthogonal to every vector in **W**.
+
+::: {.callout-note title="Key Concept"}
+The orthogonality relationships among the four fundamental subspaces of a matrix **A** are:
+- The **row space** of **A** and its **nullspace** are orthogonal.
+- The **column space** of **A** and its **left nullspace** are orthogonal.
+:::
+
+These orthogonality relationships have important consequences:
+
+- They provide a geometric interpretation of the solutions to linear equations. For example, the fact that the row space and nullspace are orthogonal means that any solution to **Ax** = 0 lies in a direction perpendicular to all the rows of **A**.
+- They lead to powerful techniques for solving least squares problems, where we seek to find the "best" solution to an inconsistent system of equations.
+
+### Projections: Finding the Closest Vector in a Subspace
+
+The concept of orthogonality leads naturally to the idea of **projections onto subspaces**. Given a vector **b** and a subspace **S**, the projection of **b** onto **S** is the vector **p** in **S** that is closest to **b**. The error vector **e** = **b** - **p** is orthogonal to **S**.
+
+::: {.callout-note title="Key Concept"}
+The **projection** of a vector onto a subspace is the closest point in the subspace to the vector, minimizing the error.
+:::
+
+The two important types of projections are:
+
+1. **Projection onto a line:** If **S** is a line spanned by a vector **a**, the projection of **b** onto **S** is given by:
+   $$\mathbf{p} = \frac{\mathbf{a}^T\mathbf{b}}{\mathbf{a}^T\mathbf{a}} \mathbf{a}$$
+
+2. **Projection onto a subspace spanned by columns of **A**:** If **S** is the column space of a matrix **A**, the projection of **b** onto **S** is given by:
+   $$\mathbf{p} = \mathbf{A}(\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\mathbf{b}$$
+
+   The matrix **P** = **A**(**A**<sup>T</sup>**A**)<sup>-1</sup>**A**<sup>T</sup> is called the **projection matrix** onto the column space of **A**. It satisfies the properties **P**<sup>2</sup> = **P** and **P**<sup>T</sup> = **P**, reflecting that projecting a vector twice onto the same subspace doesn't change it.
+
+::: {.callout-note title="Key Concept"}
+ The **projection matrix** is essential for solving least squares problems, providing the best approximation of a vector within a column space.
+:::
+
+### Least Squares Approximations: Handling Inconsistent Systems
+
+Projections play a crucial role in solving **least squares problems**, which arise when we have an inconsistent system of equations **Ax** = **b** (i.e., a system with no exact solution). In such cases, we seek to find the vector **x** that minimizes the squared error ||**b** - **A**x||<sup>2</sup>. This leads to the **normal equations**:
+
+$$\mathbf{A}^T\mathbf{A}\hat{\mathbf{x}} = \mathbf{A}^T\mathbf{b}$$
+
+::: {.callout-note title="Key Concept"}
+The **normal equations** are derived from minimizing the squared error in least squares problems, leading to the best solution approximation.
+:::
+
+The solution $\hat{\mathbf{x}}$ gives the coefficients of the projection of **b** onto the column space of **A**. This projection, **p** = **A**$\hat{\mathbf{x}}$, represents the "best" approximation to **b** that we can achieve within the column space of **A**.
+
+::: {.callout-note title="Key Concept"}
+**Least squares approximations** are commonly applied in regression analysis to determine the best-fitting line for data points.
+:::
+
+### Orthogonal Matrices: Preserving Lengths and Angles
+
+An **orthogonal matrix** is a square matrix **Q** whose columns are orthonormal. This means that the columns are orthogonal to each other and have unit length. As a result, orthogonal matrices satisfy the property **Q**<sup>T</sup>**Q** = **I**, which implies **Q**<sup>T</sup> = **Q**<sup>-1</sup>.
+
+::: {.callout-note title="Key Concept"}
+**Orthogonal matrices** preserve lengths and angles during transformations, making them invaluable in numerical computations.
+:::
+
+Orthogonal matrices have several important properties:
+
+- They preserve lengths: ||**Qx**|| = ||**x**|| for any vector **x**.
+- They preserve angles: (**Qx**)<sup>T</sup>(**Qy**) = **x**<sup>T</sup>**y** for any vectors **x** and **y**.
+- They are computationally efficient to invert, as their inverse is simply their transpose.
+
+### Gram-Schmidt Process: Constructing Orthogonal Bases
+
+The **Gram-Schmidt process** provides a systematic way to construct an orthogonal basis for a subspace. Given a set of linearly independent vectors **a**, **b**, **c**, ..., the process generates a set of orthogonal vectors **q**<sub>1</sub>, **q**<sub>2</sub>, **q**<sub>3</sub>, ... as follows:
+
+1. **q**<sub>1</sub> = **a** / ||**a**|| 
+2. $q_2=\frac{\mathbf{b} - (\mathbf{q}_1^T\mathbf{b})\mathbf{q}_1}{||\mathbf{b} - (\mathbf{q}_1^T\mathbf{b})\mathbf{q}_1||}$
+3.  $q_3 =\frac{\mathbf{c} - (\mathbf{q}_1^T\mathbf{c})\mathbf{q}_1 - (\mathbf{q}_2^T\mathbf{c})\mathbf{q}_2}{||\mathbf{c} - (\mathbf{q}_1^T\mathbf{c})\mathbf{q}_1 - (\mathbf{q}_2^T\mathbf{c})\mathbf{q}_2||}$
+4. ...
+
+At each step, we subtract the projection of the current vector onto the subspace spanned by the previous orthogonal vectors, ensuring that the resulting vector is orthogonal to all the previous ones.
+
+::: {.callout-note title="Key Concept"}
+The **Gram-Schmidt process** systematically constructs an orthogonal basis, simplifying many linear algebra computations.
+:::
+
+### QR Factorization: Expressing a Matrix Using Orthogonal and Triangular Components
+
+The Gram-Schmidt process leads to the **QR factorization**, a powerful matrix factorization that expresses any matrix **A** as the product of an orthogonal matrix **Q** and an upper triangular matrix **R**:
+
+$$\mathbf{A} = \mathbf{QR}$$
+
+::: {.callout-note title="Key Concept"}
+The **QR factorization** allows us to express a matrix as a product of orthogonal and triangular components, enhancing numerical stability in computations.
+:::
+
+The columns of **Q** form an orthonormal basis for the column space of **A**, while **R** captures the linear combinations of the columns of **Q** that produce the columns of **A**.
+
+The QR factorization has numerous applications in linear algebra, including:
+
+- Solving least squares problems efficiently.
+- Computing eigenvalues and eigenvectors.
+- Performing stable numerical computations.

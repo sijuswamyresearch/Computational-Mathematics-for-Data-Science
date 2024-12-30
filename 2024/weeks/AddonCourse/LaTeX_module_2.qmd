@@ -1,0 +1,316 @@
+---
+title: "LaTeX Module 2: Mathematical Typesetting"
+format: html
+editor: visual
+---
+
+## Introduction
+
+In this module, we explore LaTeX’s powerful features for typesetting mathematical expressions. This is one of LaTeX’s greatest strengths, making it ideal for scientific and engineering documentation. We will cover writing equations and formulas, using LaTeX for complex math, and aligning and referencing equations.
+
+---
+
+## Writing Equations and Formulas
+
+LaTeX offers two primary ways to write mathematical expressions:
+
+1. **Inline Math** - Used within text, enclosed in `$...$`.
+
+2. **Displayed Math** - Standalone equations centered on the page, enclosed with `\[ ... \]` or `$$ ... $$`.
+
+### Inline Math
+
+Inline math is used for simple equations within a sentence. Place the expression inside `$...$` to format it as math.
+
+Example:
+
+```latex
+The area of a circle is given by $A = \pi r^2$.
+```
+
+### Displayed Math
+
+Displayed math is used for larger or more complex expressions that should appear on a separate line.
+
+Example:
+
+```latex
+The area of a circle can also be represented as:
+\[
+A = \pi r^2
+\]
+```
+
+### Additional Examples
+
+1. Circumference of a circle: 
+
+```latex
+$C = 2\pi r$.
+```
+
+2. Pythagorean theorem:
+
+```latex
+\[
+c^2 = a^2 + b^2
+\]
+
+```
+
+## The Power of LaTeX for Complex Math
+
+LaTeX is especially powerful when handling complex formulas, such as fractions, exponents, roots, and matrices.
+
+* Fractions, Exponents, and Roots
+
+* Fractions are written using `\frac{numerator}{denominator}`
+
+* Exponents are written as `x^2` or `e^{x+y}`
+
+* Roots can be square roots `\sqrt{x}` or nth roots `\sqrt[n]{x}`
+
+:::{.callout-note}
+### LaTeX symols
+
+A comprehensive list of LaTeX symbols is available at (Symbols)<https://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols>
+
+:::
+
+Example:
+
+```latex
+\[
+y = \frac{ax^2 + bx + c}{d} \quad \text{and} \quad z = \sqrt[3]{x + y^2}
+\]
+
+```
+
+## Matrices
+Matrices are fundamental in engineering calculations and can be easily created using the `bmatrix`, `pmatrix`, or `vmatrix` environments.
+
+Example:
+
+```latex
+\[
+\begin{bmatrix}
+a & b \\
+c & d \\
+\end{bmatrix}
+\]
+
+```
+
+Example of a 3x3 matrix:
+
+
+```latex
+\[
+\begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{pmatrix}
+\]
+
+```
+
+### Practice Complex Math
+
+1. Write a fraction using `\frac{a+b}{c+d}`.
+
+2. Create a $3\times 3$  matrix and display it.
+
+## Aligning and Referencing Equations
+
+When working with multiple equations, the `align` environment helps align equations by the equal sign or another point. You can also label and reference equations throughout the document.
+
+### Aligning Equations
+
+The align environment automatically aligns equations at the `&` symbol.
+
+Example:
+
+
+```latex
+\begin{align}
+f(x) &= ax^2 + bx + c \\
+g(x) &= d\sqrt{x} + e
+\end{align}
+```
+
+### Referencing Equations
+To reference an equation, label it using `\label{label_name}` and reference it later using `\eqref{label_name}`.
+
+Example:
+
+```latex
+\begin{equation} \label{eq:quadratic}
+f(x) = ax^2 + bx + c
+\end{equation}
+
+The quadratic equation \eqref{eq:quadratic} is fundamental in algebra.
+
+```
+
+### Practice problem: Align and Reference Equations
+
+Use the align environment to display and align the following system of equations:
+
+\begin{align}
+x + y &= 10 \\
+x - y &= 4
+\end{align}
+
+Label one equation and reference it in a sentence below.
+
+# Module 2: Task Section - Mathematical Typesetting
+
+This task section provides practice in writing and formatting various mathematical expressions using LaTeX’s typesetting capabilities. Complete each task by writing the LaTeX code in Overleaf.
+
+---
+
+## Task 1: Writing Basic Equations
+
+1. **Inline Equation**  
+   Write an inline equation for the formula of the circumference of a circle.
+
+2. **Displayed Equation**  
+   Write a displayed equation for the Pythagorean theorem.
+
+3. **Quadratic Formula**  
+   Write the quadratic formula as a displayed equation.
+
+---
+
+## Task 2: Creating Complex Expressions
+
+1. **Fraction and Exponent**  
+   Create a fraction with exponents in both the numerator and the denominator.
+
+2. **Square and Cube Roots**  
+   Use square and cube roots in an expression.
+
+3. **Summation and Product Notations**  
+   Write the summation notation for the sum of squares from 1 to \(n\) and the product notation for the product of terms from \(k = 1\) to \(m\).
+
+---
+
+## Task 3: Working with Matrices
+
+1. **2x2 Matrix**  
+   Write a simple 2x2 matrix.
+
+2. **3x3 Matrix**  
+   Write a 3x3 matrix with entries of your choice.
+
+---
+
+## Task 4: Aligning and Referencing Equations
+
+1. **Aligned Equations**  
+   Use the `align` environment to write the following set of equations:
+   - \(f(x) = ax^2 + bx + c\)
+   - \(g(x) = dx + e\)
+
+2. **Referencing Equations**  
+   Write an equation, label it, and then reference it in a subsequent line of text.
+
+# Bibliographies in LaTeX
+
+ ## Using the `thebibliography` Environment
+
+   The `thebibliography` environment is a built-in LaTeX environment for creating bibliographies. Here is an example:
+
+   ```latex
+   \begin{thebibliography}{9}
+   \bibitem{lamport94}
+     Leslie Lamport,
+     \textit{\LaTeX: A Document Preparation System},
+     Addison Wesley, Massachusetts,
+     2nd Edition,
+     1994.
+   \end{thebibliography}
+```
+
+## Using biblatex with `.bib` Files
+
+The biblatex package provides advanced bibliography facilities. Here is an example of how to use it:
+
+1. **Create a `.bib` File**  
+   First, create a `.bib` file (e.g., `references.bib`) with the following content:
+   ```bibtex
+   @book{lamport94,
+     author    = {Leslie Lamport},
+     title     = {LaTeX: A Document Preparation System},
+     year      = {1994},
+     publisher = {Addison Wesley},
+     edition   = {2},
+     address   = {Massachusetts}
+   }
+```
+
+2. Include the Bibliography in Your LaTeX Document
+
+
+Then, include the bibliography in your LaTeX document:
+
+```latex
+\usepackage[backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\begin{document}
+
+This is a citation \cite{lamport94}.
+
+\printbibliography
+
+\end{document}
+
+```
+
+
+
+# Final Session: Using LaTeX Templates from GitHub Repository
+
+In this session, participants will explore the use of LaTeX templates to simplify and accelerate document creation. A curated set of templates is available in our GitHub repository, covering common document types like reports, presentations, academic papers, resumes, and more. These templates are designed to help participants jump-start their projects with professionally formatted structures.
+
+## Accessing the Templates
+
+1. **Visit the GitHub Repository**  
+   Go to the provided GitHub link to access a collection of ready-to-use LaTeX templates. These templates are categorized by document type and come with sample content and comments explaining each part of the structure.
+   Link to the GitHub repository: <https://github.com/sijuswamy/Common-LaTeX-Templates-for-Engineers>
+
+2. **Cloning or Downloading the Repository**  
+   Clone the repository or download it as a ZIP file to have local copies of the templates. These templates can then be opened directly in Overleaf or your preferred LaTeX editor.
+
+3. **Exploring Template Files**  
+   Each template includes a README file with an overview of the template’s structure, styling options, and key sections.
+
+## Templates Included
+
+The repository includes templates for:
+- **Technical Reports**: Comprehensive reports with sections for abstract, introduction, methodology, results, and conclusion.
+- **Academic Papers**: Templates adhering to common academic journal formats.
+- **Presentation Slides**: Beamer-based templates for creating professional, well-organized slide decks.
+- **Resumes/CVs**: Templates optimized for clean, readable layouts ideal for professional profiles.
+
+## Customizing Templates
+
+Each template is fully customizable. Participants will learn how to:
+- Modify title pages, headers, footers, and section headers.
+- Adjust styling for fonts, colors, and spacing.
+- Add or remove sections based on specific needs.
+- Use predefined commands and environments to standardize document styling.
+
+## Benefits of Using Templates
+
+- **Saves Time**: Templates provide a ready-made structure, reducing the time needed for formatting.
+- **Consistency**: Standardized templates help maintain consistent formatting across documents.
+- **Professional Appearance**: Designed with best practices in mind, the templates ensure a polished, professional look.
+
+## Hands-On Activity
+
+Participants will select a template from the repository, make edits to personalize it, and produce a sample output (e.g., a one-page CV or the first few pages of a technical report). This activity will reinforce template-based LaTeX skills and prepare participants for future document needs.
+
+---

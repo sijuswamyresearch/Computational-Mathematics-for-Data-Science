@@ -1,0 +1,126 @@
+title: "Determinants: A Key Value for Square Matrices"
+
+---
+
+Section 5 of the "ZoomNotes for Linear Algebra" explores the concept of the **determinant**, a single number associated with a square matrix that encapsulates crucial information about its properties. The determinant is not only a tool for computation but also a bridge connecting various aspects of linear algebra, including matrix invertibility, solving linear systems, and understanding geometric properties.
+
+### Defining Properties and Calculation Methods: From Permutations to Cofactors
+
+The determinant of a square matrix **A**, denoted as det **A**, can be defined through three fundamental properties:
+
+1. **Row exchange**: Exchanging two rows of **A** changes the sign of det **A**.
+2. **Linearity in each row**: det **A** is a linear function of each row of **A**, holding all other rows fixed.
+3. **Identity matrix**: det **I** = 1, where **I** is the identity matrix.
+
+These properties lead to various ways of calculating determinants.
+
+#### Determinant of a 2x2 Matrix
+
+For a $2 \times 2$ matrix:
+
+$$
+A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+$$
+
+the determinant is given by:
+
+$$
+\text{det } A = ad - bc
+$$
+
+**Example**: For matrix 
+
+$$
+A = \begin{pmatrix} 3 & 5 \\ 2 & 4 \end{pmatrix}
+$$
+
+the determinant is:
+
+$$
+\text{det } A = (3)(4) - (5)(2) = 12 - 10 = 2
+$$
+
+#### Determinant of a 3x3 Matrix
+
+For a $3 \times 3$ matrix, the determinant can be calculated using the **"Big Formula,"** which sums over all permutations of the columns:
+
+$$
+A = \begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{pmatrix}
+$$
+
+The determinant is given by:
+
+$$
+\text{det } A = a_{11}a_{22}a_{33} - a_{12}a_{21}a_{33} + a_{12}a_{23}a_{31} - a_{13}a_{22}a_{31} + a_{13}a_{21}a_{32} - a_{11}a_{23}a_{32}
+$$
+
+This formula highlights that each term in the determinant takes one element from each row and each column, with a sign determined by the permutation of the columns.
+
+#### Cofactor Expansion
+
+Another approach is the **cofactor expansion**, which expresses the determinant in terms of smaller determinants called **cofactors**. A cofactor $C_{ij}$ is obtained by removing row $i$ and column $j$ from **A** and multiplying the determinant of the remaining $(n-1) \times (n-1)$ matrix by $(-1)^{i+j}$. 
+
+For example, the cofactor expansion along row 1 of a $3 \times 3$ matrix **A** is:
+
+$$
+\text{det } A = a_{11}C_{11} + a_{12}C_{12} + a_{13}C_{13}
+$$
+
+### Key Properties and Applications: Invertibility, Cramer's Rule, and Volumes
+
+Determinants possess several important properties that make them valuable tools in linear algebra:
+
+::: {.callout-note title="Keynotes"}
+**Invertibility**: A square matrix **A** is invertible if and only if det **A** ≠ 0. This property stems from the fact that the determinant is related to the volume of the parallelepiped formed by the column vectors of **A**. If the determinant is zero, the volume collapses to zero, indicating that the columns are linearly dependent, and hence **A** is not invertible.
+
+**Determinant of product**: $\text{det } (AB) = (\text{det } A)(\text{det } B) $ for any two square matrices **A** and **B** of the same size.
+
+**Determinant of transpose**: $\text{det } A = \text{det } A^T $.
+
+**Determinant of inverse**: $\text{det } (A^{-1}) = \frac{1}{\text{det } A} $ if **A** is invertible.
+:::
+
+These properties lead to important applications:
+
+#### Cramer’s Rule
+
+Cramer’s Rule provides a formula for solving a system of linear equations $Ax = \mathbf{b}$ when **A** is invertible. The solution for each component $x_i$ is given by the ratio of two determinants:
+
+$$
+x_i = \frac{\text{det } B_i}{\text{det } A}
+$$
+
+where **B**<sub>i</sub> is the matrix obtained by replacing the $i$-th column of **A** with the vector **b**. However, Cramer’s Rule is not computationally efficient for large systems due to the determinant calculations involved.
+
+#### Volume Calculation
+
+The absolute value of the determinant of a matrix **E** whose rows (or columns) represent the edges of a parallelepiped in $n$-dimensional space gives the volume of that parallelepiped. This geometric interpretation connects determinants to the concept of linear transformations and their effect on volumes.
+
+### Special Cases: Orthogonal, Triangular, and LU Factorization
+
+The following special cases of matrices simplify determinant calculations:
+
+- **Orthogonal Matrices**: For an orthogonal matrix **Q**, $\text{det } Q = \pm 1$ because $Q^T Q = I$ implies $(\text{det } Q)^2 = 1$.
+  
+- **Triangular Matrices**: The determinant of a triangular matrix (upper or lower) is simply the product of its diagonal entries. For example, for an upper triangular matrix:
+
+$$
+A = \begin{pmatrix} 1 & 2 & 3 \\ 0 & 4 & 5 \\ 0 & 0 & 6 \end{pmatrix}
+$$
+
+the determinant is:
+
+$$
+\text{det } A = 1 \cdot 4 \cdot 6 = 24
+$$
+
+- **LU Factorization**: If a matrix **A** can be factored as $A = LU$, where **L** is lower triangular and **U** is upper triangular, then:
+
+$$
+\text{det } A = (\text{det } L)(\text{det } U) = \text{product of the pivots in } U.
+$$
+
+This property arises from the fact that elimination operations used to obtain the LU factorization do not change the determinant (except for possible sign changes due to row exchanges).
+
+### Summary
+Overall, Section 5 of the " Computational Linear Algebra" establishes determinants as fundamental quantities associated with square matrices. Their connection to invertibility, linear systems, and geometric concepts like volumes makes them essential tools for understanding and solving various linear algebra problems. Furthermore, the properties of determinants, especially in special cases like orthogonal and triangular matrices, offer valuable insights and computational advantages in numerous applications.

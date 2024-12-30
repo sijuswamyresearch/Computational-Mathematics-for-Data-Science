@@ -1,0 +1,146 @@
+---
+title: "Unpacking the World of Learning from Data via Gradient Descent"
+---
+
+## Unpacking the World of Learning from Data via Gradient Descent (Linear Algebra and Calculus Perspective)
+
+This section provides a detailed exploration of **gradient descent** within the realms of linear algebra, matrices, and calculus, foundational areas in both machine learning and deep learning. The focus is on the mathematical formulation of learning functions and the optimization techniques used to train models to extract meaningful patterns from data.
+
+### Learning Functions: From Data to Predictions
+
+A **learning function**, mathematically represented as:
+
+$$ F(\mathbf{W}, \mathbf{X}) $$
+
+where:
+
+- $\mathbf{X} \in \mathbb{R}^{m \times n}$ represents the input **data**, where each row is a feature vector describing a sample from a dataset.
+- $\mathbf{W} \in \mathbb{R}^{n \times k}$ represents the **weight matrix**, consisting of learnable parameters that optimize the model's performance during training.
+
+:::{.callout-note}
+**Key Concept:** A learning function maps the input data $\mathbf{X}$ through a series of transformations to predict an output, using the learnable weight matrix $\mathbf{W}$.
+:::
+
+A learning function, such as a **neural network**, is constructed by stacking multiple layers, each applying two fundamental operations:
+
+1. **Linear Transformation**: The transformation at each layer $k$ is described by:
+
+   $$ \mathbf{Z}_k = \mathbf{X}_k \mathbf{W}_k + \mathbf{b}_k $$
+
+   where $\mathbf{W}_k \in \mathbb{R}^{n_k \times m_k}$ is the weight matrix, $\mathbf{b}_k$ is the bias vector, and $\mathbf{X}_k$ is the input to the layer.
+   
+2. **Nonlinear Activation**: After the linear transformation, a **nonlinear function** such as **ReLU (Rectified Linear Unit)** is applied:
+
+   $$ \mathbf{X}_{k+1} = \text{ReLU}(\mathbf{Z}_k) $$
+
+   where ReLU is defined as $\text{ReLU}(z) = \max(0, z)$, introducing non-linearity that enables the network to model complex functions.
+
+The process is repeated across multiple layers, where each output becomes the input for the next layer. The overall function $F(\mathbf{W}, \mathbf{X})$ maps the input to the final output through this series of transformations.
+
+### Landscape of the Learning Function: Matrix Representation
+
+The **landscape** of the learning function is a high-dimensional surface, defined by the parameters $\mathbf{W}$. The activation functions like ReLU create **folds** or **partitions** in this surface, dividing it into distinct linear regions. The complexity of the learning function, denoted as $r(N, p)$, grows exponentially with:
+
+- $N$: The number of ReLU activations (folds) in the function.
+- $p$: The dimensionality of the input data.
+
+:::{.callout-note}
+**Key Concept:** The complexity of the learning function is influenced by the number of ReLU activations and the dimensionality of the input, making the loss landscape more complex.
+:::
+
+The total number of distinct linear pieces grows rapidly with the depth (number of layers) and the dimensionality of the input, making the optimization process more challenging.
+
+### Minimizing Loss: The Core Optimization Problem
+
+The training of a neural network is framed as an optimization problem, where the goal is to minimize a **loss function** $L(\mathbf{W})$ that measures the difference between the predicted values and the actual target values in the training data. Two common loss functions are:
+
+1. **Square Loss** (used in regression tasks):
+
+   $$ L(\mathbf{W}) = \frac{1}{2N} \sum_{i=1}^{N} \|\mathbf{y}_i - \hat{\mathbf{y}}_i\|^2 $$
+
+   where $\mathbf{y}_i$ is the true value, and $\hat{\mathbf{y}}_i$ is the predicted value.
+
+2. **Cross-Entropy Loss** (used in classification tasks):
+
+   $$ L(\mathbf{W}) = - \frac{1}{N} \sum_{i=1}^{N} \left[ \mathbf{y}_i \log \hat{\mathbf{y}}_i + (1 - \mathbf{y}_i) \log (1 - \hat{\mathbf{y}}_i) \right] $$
+
+   where $\hat{\mathbf{y}}_i$ is the predicted probability for class $i$.
+
+:::{.callout-note}
+**Key Concept:** Minimizing the loss function is the core of the optimization process in machine learning. Common loss functions include square loss and cross-entropy loss.
+:::
+
+### Gradient Descent: Optimization via Calculus
+
+The most common algorithm to minimize the loss function is **gradient descent**. The gradient $\nabla L(\mathbf{W})$ is the derivative of the loss function with respect to the weights $\mathbf{W}$, providing the direction of steepest ascent. To minimize the loss, weights are updated in the opposite direction:
+
+$$ \mathbf{W}_{t+1} = \mathbf{W}_t - \eta \nabla L(\mathbf{W}_t) $$
+
+where:
+
+- $\eta$ is the **learning rate**, controlling the step size for each update.
+- $\nabla L(\mathbf{W}_t)$ is the gradient of the loss function at iteration $t$.
+
+:::{.callout-note}
+**Key Concept:** Gradient descent is the most widely used algorithm for minimizing the loss function. It updates the weights in the opposite direction of the gradient.
+:::
+
+### Momentum: Overcoming Slow Convergence
+
+Gradient descent can converge slowly, especially when traversing **narrow valleys** in the loss landscape. To address this, **momentum** accelerates the descent by incorporating information from previous updates:
+
+$$ \mathbf{v}_{t+1} = \beta \mathbf{v}_t + (1 - \beta) \nabla L(\mathbf{W}_t) $$
+
+$$ \mathbf{W}_{t+1} = \mathbf{W}_t - \eta \mathbf{v}_{t+1} $$
+
+where:
+
+- $\mathbf{v}_t$ is the velocity term, which smooths out the updates.
+- $\beta$ is the momentum parameter (commonly set to 0.9).
+
+:::{.callout-note}
+**Key Concept:** Momentum helps accelerate gradient descent by incorporating information from previous steps, leading to faster convergence, especially in complex landscapes.
+:::
+
+Popular momentum-based algorithms include:
+
+- **Heavy Ball Method**: Incorporates a constant momentum term that helps accelerate convergence.
+- **ADAM (Adaptive Moment Estimation)**: Adjusts the learning rate by combining gradient information over time using exponential moving averages.
+
+### Deep Learning Architectures: Matrix Operations
+
+Several advanced architectures leverage the power of linear algebra and matrix operations:
+
+- **Convolutional Neural Networks (CNNs)**: Utilize convolution operations, represented as matrix multiplications, to capture spatial hierarchies in data such as images:
+
+   $$ (\mathbf{X} * \mathbf{W})_{i,j} = \sum_{m,n} \mathbf{X}_{i+m,j+n} \cdot \mathbf{W}_{m,n} $$
+
+- **Max-Pooling**: Reduces the dimensionality of the feature maps by selecting the maximum value in sub-regions of the input matrix, preserving the most significant features.
+
+- **Softmax Function**: Converts the output logits into probabilities, crucial for classification tasks. Given logits $z_i$, the softmax is given by:
+
+   $$ \text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{k} e^{z_j}} $$
+
+- **Residual Networks (ResNets)**: Introduce **skip connections** that bypass certain layers, represented as:
+
+   $$ \mathbf{X}_{k+1} = f(\mathbf{X}_k, \mathbf{W}_k) + \mathbf{X}_k $$
+
+   where $f(\mathbf{X}_k, \mathbf{W}_k)$ is the transformation applied at layer $k$.
+
+:::{.callout-note}
+**Key Concept:** Deep learning architectures like CNNs, Softmax, and ResNets use matrix operations to process data and optimize the learning process.
+:::
+
+### Backpropagation: Calculus and Chain Rule
+
+**Backpropagation** is the algorithm used to efficiently compute gradients for each layer during training. It relies on the **chain rule** of calculus to propagate gradients backward through the network:
+
+For a given layer $k$, the gradient of the loss with respect to the weights is:
+
+$$ \frac{\partial L}{\partial \mathbf{W}_k} = \frac{\partial L}{\partial \mathbf{Z}_k} \cdot \frac{\partial \mathbf{Z}_k}{\partial \mathbf{W}_k} $$
+
+where $\mathbf{Z}_k$ is the output of the linear transformation at layer $k$. The gradients are passed back through the network, updating each layer's weights to minimize the overall loss.
+
+:::{.callout-note}
+**Key Concept:** Backpropagation computes gradients efficiently through the chain rule, enabling the optimization of deep networks.
+:::

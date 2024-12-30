@@ -1,0 +1,106 @@
+---
+title: "Mastering LaTeX for Engineering Professionals"
+format: html
+editor: visual
+---
+
+# Course Overview
+
+Welcome to **Mastering LaTeX for Engineering Professionals**, a hands-on course designed to equip you with the skills to create professional-grade documents using LaTeX. Whether you’re a seasoned engineer or just starting out, this course will guide you through the essentials of LaTeX, from fundamental syntax to advanced formatting techniques, enabling you to create visually stunning documents with technical precision.
+
+---
+
+## Why Learn LaTeX?
+
+In engineering and scientific fields, clear, well-formatted documentation is essential. LaTeX is a powerful tool used by professionals worldwide for typesetting complex documents, such as research papers, technical reports, resumes, and presentations. This course will empower you to:
+
+- **Create visually appealing documents** that meet industry standards for technical writing and publishing.
+- **Handle complex equations, tables, and figures** with ease and precision.
+- **Automate formatting tasks,** so you can focus on content rather than layout.
+- **Collaborate seamlessly** with team members using version control tools and platforms like Overleaf and Git.
+
+Join us to gain a skill that will enhance your documentation and set you apart in your professional work.
+
+---
+
+## Course Objectives
+
+By the end of this course, you will be able to:
+
+1. Understand the basics of LaTeX syntax and structure.
+2. Format documents, tables, and figures for professional-quality results.
+3. Typeset mathematical expressions, formulas, and complex equations.
+4. Create structured reports, articles, and research papers.
+5. Use LaTeX templates for a variety of document types, including resumes, technical reports, and presentations.
+6. Integrate LaTeX with tools like Overleaf for collaborative writing.
+
+---
+
+## Target Audience
+
+This course is ideal for:
+
+- Engineers and scientists looking to enhance their documentation skills.
+- Graduate students and academics preparing research papers, theses, and presentations.
+- Industry professionals who regularly create technical reports and specifications.
+- Anyone interested in producing professional-quality documents with a technical focus.
+
+---
+
+## Course Outline
+
+### Module 1: Introduction to LaTeX and Setup
+- Why LaTeX? Overview and Applications
+- Installing and Setting Up LaTeX
+- Understanding LaTeX Syntax and Structure
+
+### Module 2: Basic Document Creation
+- Text Formatting and Page Layouts
+- Sections, Lists, and Tables
+- Adding Images and Figures
+
+### Module 3: Mathematical Typesetting
+- Writing Equations and Formulas
+- The Power of LaTeX for Complex Math
+- Aligning and Referencing Equations
+
+### Module 4: Advanced Document Formatting
+- Creating Bibliographies with BibTeX
+- Document Class Options for Reports, Articles, and Presentations
+- Creating and Using Custom Templates
+
+### Module 5: Collaboration and Version Control
+- Using LaTeX on Overleaf for Collaboration
+- Integrating LaTeX with Git for Version Control
+- Best Practices for Document Collaboration
+
+---
+
+## Course Resources
+
+- **Course Notes:** Detailed PDFs with examples and explanations.
+- **Templates:** Pre-made LaTeX templates for various document types, including resumes, articles, and reports.
+- **Code Repository:** Access to code examples and exercises on GitHub.
+- **Discussion Forum:** A dedicated forum for questions, discussions, and collaboration.
+
+---
+
+## Course Format
+
+- **Duration:** 4 weeks
+- **Format:** Online lectures with downloadable exercises and templates
+- **Assignments:** Weekly hands-on assignments to reinforce skills
+- **Project:** Final project to create a professional document using LaTeX
+
+---
+
+## Enroll Today
+
+Ready to transform your documentation skills? Enroll today and unlock the power of LaTeX for professional engineering documentation. Create documents that reflect your technical expertise with precision, elegance, and impact.
+
+<div class="call-to-action">
+  <a href="https://example.com/register" class="btn btn-primary">Register Now</a>
+</div>
+
+---
+

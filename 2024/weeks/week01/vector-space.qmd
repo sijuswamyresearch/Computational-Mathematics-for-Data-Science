@@ -1,0 +1,196 @@
+---
+title: "Vector Spaces: The Foundation of Linear Algebra"
+format: html
+---
+
+## Vector Spaces: The Foundation of Linear Algebra
+
+Session 3 delves into **vector spaces and subspaces**, introducing essential concepts such as **basis** and **dimension**. These ideas lay the groundwork for understanding linear transformations and their matrix representations.
+
+::: {.callout-note title="Key Concept"}
+Vector spaces and subspaces form the foundation of linear transformations, which are represented as matrices in computational applications.
+:::
+
+---
+
+### Vector Spaces: Embracing Linear Combinations
+
+A **vector space** is a collection of objects (vectors) that can be added together and multiplied by scalars, following certain rules. Though vectors are often represented as column matrices, vector spaces can encompass a wide range of objects, such as matrices or functions.
+
+Here are the **eight axioms** that must hold for any set to be considered a vector space. Let$V$ be a vector space, and let$\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$ and$c, d \in \mathbb{R}$ (or any field).
+
+---
+
+> 1. **Closure under Addition**
+For any two vectors$\mathbf{u}, \mathbf{v} \in V$, their sum$\mathbf{u} + \mathbf{v}$ must also be in$V$.
+
+$$
+\mathbf{u} + \mathbf{v} \in V
+$$
+
+---
+
+> 2. **Closure under Scalar Multiplication**
+For any scalar$c \in \mathbb{R}$ and any vector$\mathbf{v} \in V$, the scalar multiple$c\mathbf{v}$ must also be in$V$.
+
+$$
+c\mathbf{v} \in V
+$$
+
+---
+
+> 3. **Associativity of Vector Addition**
+For all vectors$\mathbf{u}, \mathbf{v}, \mathbf{w} \in V$, the sum of vectors is associative.
+
+$$
+(\mathbf{u} + \mathbf{v}) + \mathbf{w} = \mathbf{u} + (\mathbf{v} + \mathbf{w})
+$$
+
+---
+
+> 4. **Commutativity of Vector Addition**
+For all vectors$\mathbf{u}, \mathbf{v} \in V$, vector addition is commutative.
+
+$$
+\mathbf{u} + \mathbf{v} = \mathbf{v} + \mathbf{u}
+$$
+
+---
+
+> 5. **Existence of the Zero Vector**
+There exists a **zero vector**$\mathbf{0} \in V$ such that, for any vector$\mathbf{v} \in V$, the following holds:
+
+$$
+\mathbf{v} + \mathbf{0} = \mathbf{v}
+$$
+
+---
+
+> 6. **Existence of Additive Inverses**
+For each vector$\mathbf{v} \in V$, there exists a vector$-\mathbf{v} \in V$ such that:
+
+$$
+\mathbf{v} + (-\mathbf{v}) = \mathbf{0}
+$$
+
+---
+
+> 7. **Distributivity of Scalar Multiplication with Respect to Vector Addition**
+For all scalars$c \in \mathbb{R}$ and vectors$\mathbf{u}, \mathbf{v} \in V$, scalar multiplication distributes over vector addition:
+
+$$
+c(\mathbf{u} + \mathbf{v}) = c\mathbf{u} + c\mathbf{v}
+$$
+
+---
+
+> 8. **Distributivity of Scalar Multiplication with Respect to Scalar Addition**
+For all scalars$c, d \in \mathbb{R}$ and any vector$\mathbf{v} \in V$, scalar multiplication distributes over scalar addition:
+
+$$
+(c + d)\mathbf{v} = c\mathbf{v} + d\mathbf{v}
+$$
+
+---
+
+> 9. **Compatibility of Scalar Multiplication**
+For any scalars$c, d \in \mathbb{R}$ and any vector$\mathbf{v} \in V$:
+
+$$
+c(d\mathbf{v}) = (cd)\mathbf{v}
+$$
+
+---
+
+> 10. **Identity Element of Scalar Multiplication**
+The scalar 1 acts as the identity element for scalar multiplication. For any vector$\mathbf{v} \in V$:
+
+$$
+1 \mathbf{v} = \mathbf{v}
+$$
+
+---
+
+These axioms ensure that vectors and scalars interact in a consistent and structured way, forming the basis for many applications of linear algebra in various fields, including computer science, engineering, and physics.
+
+::: {.callout-note title="Key Concept"}
+**Closure under linear combinations**: Any linear combination of vectors within a space must also belong to that space, ensuring completeness in terms of operations.
+:::
+
+#### Examples of Vector Spaces:
+- **Euclidean spaces:** $\mathbb{R}^n$, where vectors are represented as ordered lists of real numbers.
+- **Matrix spaces:** All matrices of a specific size, e.g., the space of all $3 \times 3$ matrices.
+- **Function spaces:** Spaces formed by collections of functions, such as continuous functions over a given interval.
+---
+
+### Subspaces: Smaller Spaces within Larger Ones
+
+A **subspace** is a subset of vectors within a vector space that forms its own vector space. Subspaces must contain the zero vector and be closed under vector addition and scalar multiplication.
+
+::: {.callout-note title="Key Concept"}
+Subspaces are smaller vector spaces within a larger space, inheriting all vector space properties, including the presence of the zero vector and closure under linear combinations.
+:::
+
+#### Examples of Subspaces:
+- **Planes and lines through the origin in $\mathbb{R}^3$** are subspaces of $\mathbb{R}^3$.
+- **The set containing only the zero vector** is a subspace of any vector space.
+- **Upper triangular matrices** form a subspace within the space of all matrices of the same size.
+
+---
+
+### Four Fundamental Subspaces: A Matrix Perspective
+
+Every matrix $A$ has four fundamental subspaces that offer insight into its behavior as a linear transformation:
+
+- **Column space** $C(A)$: The set of all linear combinations of the columns of $A$. This captures the range of the transformation $A\mathbf{x}$.
+- **Row space** $C(A^T)$: The set of all linear combinations of the rows of $A$, equivalent to the column space of $A^T$.
+- **Nullspace** $N(A)$: The set of vectors $\mathbf{x}$ such that $A\mathbf{x} = 0$. These vectors are mapped to zero by the transformation.
+- **Left nullspace** $N(A^T)$: The set of vectors $\mathbf{y}$ such that $A^T\mathbf{y} = 0$, equivalent to the nullspace of $A^T$.
+
+::: {.callout-note title="Key Concept"}
+**Orthogonality Relationships**:  
+- The row space and nullspace are orthogonal to each other.  
+- The column space and left nullspace are orthogonal to each other.
+:::
+
+---
+
+### Basis and Dimension: Quantifying the Size of a Space
+
+A **basis** of a vector space is a set of linearly independent vectors that span the entire space. The **dimension** of the space is the number of vectors in any basis, indicating how many independent directions or components the space has.
+
+::: {.callout-note title="Key Concept"}
+**Linear Independence and Spanning**:  
+- Linear independence ensures that no vector in the basis can be expressed as a linear combination of others.
+- Spanning ensures that every vector in the space can be represented as a combination of the basis vectors.
+:::
+
+#### Examples:
+- The standard basis for $\mathbb{R}^3$ is $\{(1,0,0), (0,1,0), (0,0,1)\}$, and the dimension of $\mathbb{R}^3$ is 3.
+- The **rank** of a matrix equals the dimension of its column space.
+- The **nullity** of a matrix equals the dimension of its nullspace, representing the number of free variables in $A\mathbf{x} = 0$.
+
+---
+
+### Elimination and Bases: A Computational Perspective
+
+The **elimination process**, as described in session 2, can help find bases for the row space, column space, and nullspace of a matrix. By transforming a matrix into its **reduced row echelon form (RREF)**, we can:
+- Identify the pivot columns to form a basis for the column space.
+- Use corresponding rows from the RREF to form a basis for the row space.
+- Solve $R\mathbf{x} = 0$ (where $R$ is the RREF) to find a basis for the nullspace.
+
+---
+
+### Beyond Bases: A Glimpse into the Future
+
+Section 3 serves as a stepping stone for more advanced linear algebra concepts:
+
+- **Linear Transformations:** Functions between vector spaces that preserve linearity. Matrices represent such transformations, and the four fundamental subspaces offer insights into their structure.
+- **Orthogonality and Projections:** Orthogonality plays a central role in finding the closest vector in a subspace to a given vector, leading to the concept of projections.
+- **Eigenvalues and Eigenvectors:** These are special vectors that are mapped to scalar multiples of themselves by a linear transformation. They reveal the long-term behavior of systems in dynamic applications.
+
+---
+
+### Conclusion
+
+The study of vector spaces and subspaces, along with concepts like basis and dimension, provides a foundational understanding of the structure behind linear transformations. These core ideas are essential for anyone working in linear algebra, forming the backbone for analyzing problems across multiple fields, from computer science to engineering.
